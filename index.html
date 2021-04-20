@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rick And Morty - JRS Developer</title>
+</head>
+
+<body>
+    <form>
+        <input type="text" name="name" id="name" placeholder="Search">
+
+        <input class="status-input" type="checkbox" name="status" id="alive" value="alive">
+        <label for="alive">Alive</label>
+        <input class="status-input" type="checkbox" name="status" id="dead" value="dead">
+        <label for="dead">Dead</label>
+        <input class="status-input" type="checkbox" name="status" id="unknown" value="unknown">
+        <label for="unknown">Unknown</label>
+
+        <input class="gender-input" type="checkbox" name="gender" id="male" value="male">
+        <label for="male">Male</label>
+        <input class="gender-input" type="checkbox" name="gender" id="female" value="female">
+        <label for="unknown">Female</label>
+        <input class="gender-input" type="checkbox" name="gender" id="genderless" value="genderless">
+        <label for="unknown">Genderless</label>
+        <input class="gender-input" type="checkbox" name="gender" id="unknown-gender" value="unknown">
+        <label for="unknown-gender">Unknown</label>
+
+        <button type="submit" id="searchdata" onclick="searchData(event)">Search Data</button>
+    </form>
+    
+    <div id="results-container"></div>
+    <div id="pagination"></div>
+
+    <script src="./src/scripts/index.js"></script>
+</body>
+
+</html>
