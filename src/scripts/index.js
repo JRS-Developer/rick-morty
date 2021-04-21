@@ -5,11 +5,55 @@ const Container = document.createElement('div');
 // Funciones
 
 showContentButton.addEventListener('click', () => {
-    ShowContent();
+    Form();
 });
 
-const ShowContent = () => {
-    const Content = `
+const Form = () => {
+    const FormContent = `
+    <form>
+        <input type="text" name="name" id="name-search">
+        <button type="submit" id="search-principal">Buscar de una vez</button>
+    </form>
+    `;
+    root.innerHTML = FormContent;
+    const SearchPrincipal = document.getElementById('search-principal');
+    const Name = document.getElementById('name-search');
+    SearchPrincipal.addEventListener('click', () => {
+        ShowContent(Name.value);
+    });
+};
+
+const ShowContent = (name) => {
+    let Content = '';
+    if (name) {
+        Content = `
+    <form>
+        <input type="text" name="name" id="name" value=${name} placeholder="Search">
+
+        <input class="status-input" type="checkbox" name="status" id="alive" value="alive">
+        <label for="alive">Alive</label>
+        <input class="status-input" type="checkbox" name="status" id="dead" value="dead">
+        <label for="dead">Dead</label>
+        <input class="status-input" type="checkbox" name="status" id="unknown" value="unknown">
+        <label for="unknown">Unknown</label>
+
+        <input class="gender-input" type="checkbox" name="gender" id="male" value="male">
+        <label for="male">Male</label>
+        <input class="gender-input" type="checkbox" name="gender" id="female" value="female">
+        <label for="unknown">Female</label>
+        <input class="gender-input" type="checkbox" name="gender" id="genderless" value="genderless">
+        <label for="unknown">Genderless</label>
+        <input class="gender-input" type="checkbox" name="gender" id="unknown-gender" value="unknown">
+        <label for="unknown-gender">Unknown</label>
+
+        <button type="submit" id="search-data-button">Search Data</button>
+    </form>
+    
+    <div id="results-container"></div>
+    <div id="pagination"></div>
+    `;
+    } else if (!name) {
+        Content = `
     <form>
         <input type="text" name="name" id="name" placeholder="Search">
 
@@ -35,6 +79,7 @@ const ShowContent = () => {
     <div id="results-container"></div>
     <div id="pagination"></div>
     `;
+    }
 
     root.innerHTML = Content;
 
@@ -45,7 +90,6 @@ const ShowContent = () => {
     let genderInputs = document.querySelectorAll('.gender-input');
     const ResultsContainer = document.getElementById('results-container');
     const Pagination = document.getElementById('pagination');
-    console.log(Pagination);
 
     SearchDataButton.addEventListener('click', (event) => {
         searchData(
@@ -57,6 +101,15 @@ const ShowContent = () => {
             Pagination
         );
     });
+
+    searchData(
+        null,
+        statusInputs,
+        genderInputs,
+        searchName,
+        ResultsContainer,
+        Pagination
+    );
 };
 
 const searchData = (
@@ -67,14 +120,14 @@ const searchData = (
     ResultsContainer,
     Pagination
 ) => {
-    event.preventDefault();
+    if (event) {
+        event.preventDefault();
+    }
     let statusCheck = [];
     let genderCheck = [];
     if (statusInputs.length > 0) {
         IsChecked(statusInputs, statusCheck);
     }
-
-    console.log(Pagination);
 
     if (genderInputs.length > 0) {
         IsChecked(genderInputs, genderCheck);
@@ -245,7 +298,6 @@ const CreatePagination = (
     Pagination
 ) => {
     let paginationContainer = document.createElement('div');
-    console.log(Pagination);
     Pagination.innerHTML = '';
 
     const PaginationItem = `
