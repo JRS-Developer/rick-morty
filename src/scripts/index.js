@@ -1,20 +1,80 @@
 // Variables
-
-const ResultsContainer = document.getElementById('results-container');
-const Pagination = document.getElementById('pagination');
-let searchName = document.getElementById('name');
-let statusInputs = document.querySelectorAll('.status-input');
-let genderInputs = document.querySelectorAll('.gender-input');
+const root = document.getElementById('root');
+const showContentButton = document.getElementById('showContent');
 const Container = document.createElement('div');
 // Funciones
 
-const searchData = (event) => {
+showContentButton.addEventListener('click', () => {
+    ShowContent();
+});
+
+const ShowContent = () => {
+    const Content = `
+    <form>
+        <input type="text" name="name" id="name" placeholder="Search">
+
+        <input class="status-input" type="checkbox" name="status" id="alive" value="alive">
+        <label for="alive">Alive</label>
+        <input class="status-input" type="checkbox" name="status" id="dead" value="dead">
+        <label for="dead">Dead</label>
+        <input class="status-input" type="checkbox" name="status" id="unknown" value="unknown">
+        <label for="unknown">Unknown</label>
+
+        <input class="gender-input" type="checkbox" name="gender" id="male" value="male">
+        <label for="male">Male</label>
+        <input class="gender-input" type="checkbox" name="gender" id="female" value="female">
+        <label for="unknown">Female</label>
+        <input class="gender-input" type="checkbox" name="gender" id="genderless" value="genderless">
+        <label for="unknown">Genderless</label>
+        <input class="gender-input" type="checkbox" name="gender" id="unknown-gender" value="unknown">
+        <label for="unknown-gender">Unknown</label>
+
+        <button type="submit" id="search-data-button">Search Data</button>
+    </form>
+    
+    <div id="results-container"></div>
+    <div id="pagination"></div>
+    `;
+
+    root.innerHTML = Content;
+
+    const SearchDataButton = document.getElementById('search-data-button');
+
+    let searchName = document.getElementById('name');
+    let statusInputs = document.querySelectorAll('.status-input');
+    let genderInputs = document.querySelectorAll('.gender-input');
+    const ResultsContainer = document.getElementById('results-container');
+    const Pagination = document.getElementById('pagination');
+    console.log(Pagination);
+
+    SearchDataButton.addEventListener('click', (event) => {
+        searchData(
+            event,
+            statusInputs,
+            genderInputs,
+            searchName,
+            ResultsContainer,
+            Pagination
+        );
+    });
+};
+
+const searchData = (
+    event,
+    statusInputs,
+    genderInputs,
+    searchName,
+    ResultsContainer,
+    Pagination
+) => {
     event.preventDefault();
     let statusCheck = [];
     let genderCheck = [];
     if (statusInputs.length > 0) {
         IsChecked(statusInputs, statusCheck);
     }
+
+    console.log(Pagination);
 
     if (genderInputs.length > 0) {
         IsChecked(genderInputs, genderCheck);
@@ -23,7 +83,14 @@ const searchData = (event) => {
     statusCheck = statusCheck.join('&status=');
     genderCheck = genderCheck.join('&gender=');
 
-    AskData(searchName.value, statusCheck, genderCheck);
+    AskData(
+        searchName.value,
+        statusCheck,
+        genderCheck,
+        1,
+        ResultsContainer,
+        Pagination
+    );
 };
 
 const IsChecked = (check, array) => {
@@ -34,11 +101,18 @@ const IsChecked = (check, array) => {
     });
 };
 
-const AskData = async (name, status, gender, index) => {
+const AskData = async (
+    name,
+    status,
+    gender,
+    index,
+    ResultsContainer,
+    Pagination
+) => {
     let Response = await fetch(
         `https://rickandmortyapi.com/api/character/?page=${index}&name=${name}&status=${status}&gender=${gender}`
     );
-    ConfirmStatus(Response, name, status, gender);
+    ConfirmStatus(Response, name, status, gender, ResultsContainer, Pagination);
 };
 
 const capitalizeFirstLetter = (string) => {
@@ -49,7 +123,7 @@ const capitalizeFirstLetter = (string) => {
     }
 };
 
-const ShowData = async (data) => {
+const ShowData = async (data, ResultsContainer) => {
     if (Container.hasChildNodes() === false) {
         Container.classList.add('container');
         data.forEach((element) => {
@@ -77,12 +151,26 @@ const CreateCharacter = (element) => {
     return Character;
 };
 
-const ConfirmStatus = async (Response, name, status, gender) => {
+const ConfirmStatus = async (
+    Response,
+    name,
+    status,
+    gender,
+    ResultsContainer,
+    Pagination
+) => {
     switch (Response.status) {
         case 200:
             const Data = await Response.json();
-            GetPaginationInfo(Data.info, name, status, gender);
-            ShowData(Data.results);
+            GetPaginationInfo(
+                Data.info,
+                name,
+                status,
+                gender,
+                ResultsContainer,
+                Pagination
+            );
+            ShowData(Data.results, ResultsContainer);
             break;
         case 404:
             console.log('Error 404');
@@ -93,7 +181,14 @@ const ConfirmStatus = async (Response, name, status, gender) => {
     }
 };
 
-const GetPaginationInfo = (info, name, status, gender) => {
+const GetPaginationInfo = (
+    info,
+    name,
+    status,
+    gender,
+    ResultsContainer,
+    Pagination
+) => {
     let lastPage = info.pages;
 
     let nextPage = info.next;
@@ -114,7 +209,9 @@ const GetPaginationInfo = (info, name, status, gender) => {
             lastPage,
             name,
             status,
-            gender
+            gender,
+            ResultsContainer,
+            Pagination
         );
     } else if (nextPage == null) {
         let actualPage = lastPage;
@@ -128,7 +225,9 @@ const GetPaginationInfo = (info, name, status, gender) => {
             lastPage,
             name,
             status,
-            gender
+            gender,
+            ResultsContainer,
+            Pagination
         );
     }
 };
@@ -141,9 +240,12 @@ const CreatePagination = (
     lastPage,
     name,
     status,
-    gender
+    gender,
+    ResultsContainer,
+    Pagination
 ) => {
     let paginationContainer = document.createElement('div');
+    console.log(Pagination);
     Pagination.innerHTML = '';
 
     const PaginationItem = `
@@ -156,10 +258,16 @@ const CreatePagination = (
     paginationContainer.insertAdjacentHTML('beforeend', PaginationItem);
     Pagination.appendChild(paginationContainer);
 
-    CreateChangeButtons(name, status, gender);
+    CreateChangeButtons(name, status, gender, ResultsContainer, Pagination);
 };
 
-const CreateChangeButtons = (name, status, gender) => {
+const CreateChangeButtons = (
+    name,
+    status,
+    gender,
+    ResultsContainer,
+    Pagination
+) => {
     let ButtonFirstPage = document.getElementById('button-first-page');
     let ButtonPrevPage = document.getElementById('button-prev-page');
     let ButtonNextPage = document.getElementById('button-next-page');
@@ -178,19 +286,19 @@ const CreateChangeButtons = (name, status, gender) => {
 
     ButtonFirstPage.addEventListener('click', (e) => {
         const index = parseInt(e.target.textContent);
-        ChangePagination(name, status, gender, index);
+        AskData(name, status, gender, index, ResultsContainer, Pagination);
     });
     ButtonPrevPage.addEventListener('click', (e) => {
         const index = parseInt(e.target.textContent);
-        ChangePagination(name, status, gender, index);
+        AskData(name, status, gender, index, ResultsContainer, Pagination);
     });
     ButtonNextPage.addEventListener('click', (e) => {
         const index = parseInt(e.target.textContent);
-        ChangePagination(name, status, gender, index);
+        AskData(name, status, gender, index, ResultsContainer, Pagination);
     });
     ButtonLastPage.addEventListener('click', (e) => {
         const index = parseInt(e.target.textContent);
-        ChangePagination(name, status, gender, index);
+        AskData(name, status, gender, index, ResultsContainer, Pagination);
     });
 };
 
@@ -225,8 +333,4 @@ const RemoveButtonsConditional = (
     ) {
         ButtonFirstPage.style.display = 'none';
     }
-};
-
-const ChangePagination = (name, status, gender, index) => {
-    AskData(name, status, gender, index);
 };
