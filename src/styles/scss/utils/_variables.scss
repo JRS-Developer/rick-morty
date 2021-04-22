@@ -1,0 +1,48 @@
+:root {
+    /*  Variables del proyecto  */
+
+    /*  Anchura máxima del contenido en desktop */
+    --max-width: 1200px;
+
+    /*  Colores  */
+    --primary-color: #FFFFFF;
+    --primary-color-alt: #290931;
+    --title-color: #290931;
+    --text-color: #000000;
+    --body-bg-color: #FFFFFF;
+    --color: var(--primary-color);
+    --color-alt: var(--primary-color-alt);
+
+    /*  Fuentes  */
+    --body-font: 'Poppins', sans-serif;
+
+    /* Tamaños de fuentes */
+    --h1-font-size: 1.5rem;
+    --h2-font-size: 1.25rem;
+    --h3-font-size: 1rem;
+    --h4-font-size: .75rem;
+    --big-font-size: .75rem;
+    --normal-font-size: 0.7rem;
+    --small-font-size: 0.6875rem;
+    --smaller-font-size: 0.575rem;
+
+
+    /* Capas */
+    --z-back: -10;
+    --z-normal: 1;
+    --z-front: 10;
+    --z-tooltip: 20;
+    --z-overlay: 30;
+    --z-modal: 40;
+    --z-fixed: 50;
+    --z-off-canvas: 100;
+
+    /*Otros*/
+    --shadow: 0px 7px 10px rgba(0, 0, 0, 0.25)
+}
+
+$breakpoints: (s: 640px,
+    m: 768px,
+    l: 1024px,
+    lx:1200px,
+);

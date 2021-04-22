@@ -1,18 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="src/styles/css/styles.css" />
+        <title>Rick And Morty - JRS Developer</title>
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rick And Morty - JRS Developer</title>
-</head>
+    <body>
+        <!-- <button id="showContent">Mostrar Contenido</button> -->
+        <div id="root">
+            <header class="header" id="header">
+                <ul class="header__container">
+                    <li class="header__item">
+                        <span class="header__text">Home</span>
+                    </li>
+                    <li class="header__item">
+                        <button class="search-button">
+                            <img
+                                src="/src/images/Search Icon.svg"
+                                alt="Search Icon"
+                            />
+                            <span>Search</span>
+                        </button>
+                    </li>
+                </ul>
+            </header>
 
-<body>
-    <button id="showContent">Mostrar Contenido</button>
-    <div id="root"></div>
+            <main class="main">
+                <section class="section hero-section">
+                    <img
+                        src="/src/images/Rick&Morty-Name.svg"
+                        alt="Rick & Morty"
+                        class="hero-section__img"
+                    />
+                    <div class="hero-section__background"></div>
+                </section>
 
-    <script src="./src/scripts/index.js"></script>
-</body>
+                <section class="section about-section">
+                    <img
+                        src="/src/images/Rick&Morty - About Section.png"
+                        alt="About Rick & Morty"
+                        class="section__img"
+                    />
+                    <div class="about-section__container">
+                        <h1 class="section__title about-section__title">
+                            Rick & Morty
+                        </h1>
+                        <p class="section__text about-section__text">
+                            Is an American adult animated science fiction sitcom
+                            created by Justin Roiland and Dan Harmon. The series
+                            follows the misadventures of cynical mad scientist
+                            Rick Sanchez and his good-hearted but fretful
+                            grandson Morty Smith, who split their time between
+                            domestic life and interdimensional adventures.
+                        </p>
+                    </div>
+                </section>
 
+                <section class="section cta-section">
+                    <div class="cta-section__container">
+                        <h2 class="section__title cta-section__title">
+                            Search about Rick & Morty
+                        </h2>
+                        <p class="section__text cta-section__text">
+                            Search more about Rick & Morty here, where you can
+                            find info about every character of this tv show.
+                        </p>
+                        <button class="search-button search-button--large">
+                            <img
+                                src="/src/images/Search Icon.svg"
+                                alt="Search Icon"
+                            />
+                            <span>Search</span>
+                        </button>
+                    </div>
+                    <img
+                        src="/src/images/Rick&Morty - CTA Section.png"
+                        alt="Characters presentation"
+                        class="section__img cta-section__img"
+                    />
+                </section>
+            </main>
+
+            <footer class="footer"></footer>
+        </div>
+
+        <script src="./src/scripts/index.js"></script>
+    </body>
 </html>

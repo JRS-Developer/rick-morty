@@ -4,6 +4,40 @@ const showContentButton = document.getElementById('showContent');
 const Container = document.createElement('div');
 // Funciones
 
+if (location.pathname === '/' || location.pathname === '/index.html') {
+    const header = document.getElementById('header');
+    const headerText = document.querySelector('.header__text');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 200) {
+            header.classList.add('header--scroll');
+            headerText.classList.add('header__text--scroll');
+        } else if (window.scrollY <= 200) {
+            header.classList.remove('header--scroll');
+            headerText.classList.remove('header__text--scroll');
+        }
+    });
+}
+
+// * Esta es una funcion que al dar click a un boton la pagina se va hacia arriba lentamente. Solo la hice de pratica para tal vez sirva para alguna oportunidad futura.
+
+// const searchButtons = document.querySelector('.search-button');
+// searchButtons.addEventListener('click', () => {
+//     const Timer = setInterval(() => {
+//         GoUp(Timer);
+//     }, 1);
+// });
+
+// const GoUp = (Timer) => {
+//     if (window.scrollY != 0) {
+//         const position = window.scrollY;
+//         let change = position - 20;
+//         window.scrollTo(change, change);
+//     } else if (window.scrollY == 0) {
+//         clearInterval(Timer);
+//         console.log('listo');
+//     }
+// };
+
 showContentButton.addEventListener('click', () => {
     Form();
 });

@@ -1,0 +1,58 @@
+.header {
+    width: 100%;
+    display: flex;
+    position: fixed;
+    justify-content: flex-end;
+    height: 5rem;
+    align-items: center;
+    z-index: var(--z-front);
+    background-color: none;
+    transition: background-color .2s;
+}
+
+.header--scroll {
+    background-color: var(--primary-color);
+    box-shadow: var(--shadow);
+    transition: all .2s;
+}
+
+.header__item {
+    list-style: none;
+    font-size: 1.2rem;
+}
+
+.header__container {
+    display: flex;
+    align-items: center;
+    padding: 0 2rem 0 0;
+    margin: 0;
+    gap: 3rem;
+
+    @include from(s) {
+        padding: 0 4rem 0 0;
+    }
+}
+
+.header__text {
+    color: white;
+    transition: color, opacity .2s;
+    cursor: pointer;
+    opacity: .8;
+}
+
+.header__text--scroll {
+    color: black;
+    transition: opacity, color .2s;
+    opacity: .7;
+}
+
+
+.header__text:hover {
+    color: var(--primary-color);
+    opacity: 1;
+}
+
+.header__text--scroll:hover {
+    opacity: 1;
+    color: var(--primary-color-alt);
+}
