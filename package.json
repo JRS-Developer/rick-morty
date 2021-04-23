@@ -1,0 +1,14 @@
+{
+  "name": "rick-and-morty",
+  "version": "1.0.0",
+  "description": "Only a page with the Api of Rick and Morty",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jose Sanchez - JRS Developer",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^7.24.0"
+  }
+}

@@ -1,6 +1,5 @@
 // Variables
 const root = document.getElementById('root');
-const showContentButton = document.getElementById('showContent');
 // const Container = document.createElement('div');
 let Content = '';
 
@@ -425,7 +424,7 @@ const ConfirmStatus = async (
     Pagination
 ) => {
     switch (Response.status) {
-        case 200:
+        case 200: {
             const Data = await Response.json();
             GetPaginationInfo(
                 Data.info,
@@ -437,6 +436,7 @@ const ConfirmStatus = async (
             );
             ShowData(Data.results, ResultsContainer);
             break;
+        }
         case 404:
             console.log('Error 404');
             break;
