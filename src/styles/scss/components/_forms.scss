@@ -21,3 +21,11 @@
     padding: 0;
     text-indent: 20px;
 }
+
+.search-p__img {
+    width: 25px;
+
+    @include from(s) {
+        width: auto;
+    }
+}

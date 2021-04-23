@@ -119,6 +119,14 @@
     }
 }
 
+.cta-search--icon {
+    width: 30px;
+
+    @include from(s) {
+        width: auto;
+    }
+}
+
 // #SEARCH PRINCIPAL SECTION
 
 .search-p-section {

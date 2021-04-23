@@ -75,6 +75,7 @@ const Home = `
                 <img
                     src="/src/images/Search Icon.svg"
                     alt="Search Icon"
+                    class="cta-search--icon"
                 />
                 <span>Search</span>
             </button>
@@ -222,61 +223,65 @@ const Form = () => {
 const ShowContent = (name) => {
     if (name) {
         Content = `
-    <form>
-        <input type="text" name="name" id="name" value=${name} placeholder="Search">
-
-        <input class="status-input" type="checkbox" name="status" id="alive" value="alive">
-        <label for="alive">Alive</label>
-        <input class="status-input" type="checkbox" name="status" id="dead" value="dead">
-        <label for="dead">Dead</label>
-        <input class="status-input" type="checkbox" name="status" id="unknown" value="unknown">
-        <label for="unknown">Unknown</label>
-
-        <input class="gender-input" type="checkbox" name="gender" id="male" value="male">
-        <label for="male">Male</label>
-        <input class="gender-input" type="checkbox" name="gender" id="female" value="female">
-        <label for="unknown">Female</label>
-        <input class="gender-input" type="checkbox" name="gender" id="genderless" value="genderless">
-        <label for="unknown">Genderless</label>
-        <input class="gender-input" type="checkbox" name="gender" id="unknown-gender" value="unknown">
-        <label for="unknown-gender">Unknown</label>
-
-        <button type="submit" id="search-data-button">Search Data</button>
-    </form>
-    
-    <div id="results-container">
-        <div id="container"></div>
-    </div>
-    <div id="pagination"></div>
+        <main class="main">
+                <form class="filter-form">
+                    <input class="name-input" type="text" name="name" id="name" value=${name} placeholder="Search">
+            
+                    <input class="status-input" type="checkbox" name="status" id="alive" value="alive">
+                    <label for="alive">Alive</label>
+                    <input class="status-input" type="checkbox" name="status" id="dead" value="dead">
+                    <label for="dead">Dead</label>
+                    <input class="status-input" type="checkbox" name="status" id="unknown" value="unknown">
+                    <label for="unknown">Unknown</label>
+            
+                    <input class="gender-input" type="checkbox" name="gender" id="male" value="male">
+                    <label for="male">Male</label>
+                    <input class="gender-input" type="checkbox" name="gender" id="female" value="female">
+                    <label for="unknown">Female</label>
+                    <input class="gender-input" type="checkbox" name="gender" id="genderless" value="genderless">
+                    <label for="unknown">Genderless</label>
+                    <input class="gender-input" type="checkbox" name="gender" id="unknown-gender" value="unknown">
+                    <label for="unknown-gender">Unknown</label>
+            
+                    <button class="search-data-button" type="submit" id="search-data-button">Search Data</button>
+                </form>
+                
+                <div id="results-container" class="results-container">
+                    <div id="container" class="container"></div>
+                    <div id="pagination" class="pagination"></div>
+                </div>
+            </main>
     `;
     } else if (!name) {
         Content = `
-    <form>
-        <input type="text" name="name" id="name" placeholder="Search">
-
-        <input class="status-input" type="checkbox" name="status" id="alive" value="alive">
-        <label for="alive">Alive</label>
-        <input class="status-input" type="checkbox" name="status" id="dead" value="dead">
-        <label for="dead">Dead</label>
-        <input class="status-input" type="checkbox" name="status" id="unknown" value="unknown">
-        <label for="unknown">Unknown</label>
-
-        <input class="gender-input" type="checkbox" name="gender" id="male" value="male">
-        <label for="male">Male</label>
-        <input class="gender-input" type="checkbox" name="gender" id="female" value="female">
-        <label for="unknown">Female</label>
-        <input class="gender-input" type="checkbox" name="gender" id="genderless" value="genderless">
-        <label for="unknown">Genderless</label>
-        <input class="gender-input" type="checkbox" name="gender" id="unknown-gender" value="unknown">
-        <label for="unknown-gender">Unknown</label>
-
-        <button type="submit" id="search-data-button">Search Data</button>
-    </form>
-    
-    <div id="results-container">
-        <div id="container"></div>
-    </div>
-    <div id="pagination"></div>
+        <main class="main">
+                <form class="filter-form">
+                    <input class="name-input" type="text" name="name" id="name" placeholder="Search">
+            
+                    <input class="status-input" type="checkbox" name="status" id="alive" value="alive">
+                    <label for="alive">Alive</label>
+                    <input class="status-input" type="checkbox" name="status" id="dead" value="dead">
+                    <label for="dead">Dead</label>
+                    <input class="status-input" type="checkbox" name="status" id="unknown" value="unknown">
+                    <label for="unknown">Unknown</label>
+            
+                    <input class="gender-input" type="checkbox" name="gender" id="male" value="male">
+                    <label for="male">Male</label>
+                    <input class="gender-input" type="checkbox" name="gender" id="female" value="female">
+                    <label for="unknown">Female</label>
+                    <input class="gender-input" type="checkbox" name="gender" id="genderless" value="genderless">
+                    <label for="unknown">Genderless</label>
+                    <input class="gender-input" type="checkbox" name="gender" id="unknown-gender" value="unknown">
+                    <label for="unknown-gender">Unknown</label>
+            
+                    <button class="search-data-button" type="submit" id="search-data-button">Search Data</button>
+                </form>
+                
+                <div id="results-container" class="results-container">
+                    <div id="container" class="container"></div>
+                    <div id="pagination" class="pagination"></div>
+                </div>
+            </main>
     `;
     }
 
@@ -397,11 +402,17 @@ const ShowData = async (data, ResultsContainer) => {
 
 const CreateCharacter = (element) => {
     const Character = `
+    <div class="character">
             <img src=${element.image} alt=${element.name}>
             <h3>${capitalizeFirstLetter(element.name)}</h3>
-            <p>${capitalizeFirstLetter(element.status)}</p>
+            <p>${capitalizeFirstLetter(
+                element.status
+            )}  - ${capitalizeFirstLetter(element.species)}</p>
+            <p>First seen in:</p>
             <p>${capitalizeFirstLetter(element.origin.name)}</p>
-            <p>${capitalizeFirstLetter(element.location.name)}</p>`;
+            <p>Last know location:</p>
+            <p>${capitalizeFirstLetter(element.location.name)}</p>
+            </div>`;
     return Character;
 };
 

@@ -64,3 +64,11 @@
 .header__text--active {
     @extend .header__text--scroll
 }
+
+.header-search--icon {
+    width: 25px;
+
+    @include from(s) {
+        width: auto;
+    }
+}
