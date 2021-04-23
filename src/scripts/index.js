@@ -1,10 +1,101 @@
 // Variables
 const root = document.getElementById('root');
 const showContentButton = document.getElementById('showContent');
-const Container = document.createElement('div');
+// const Container = document.createElement('div');
+let Content = '';
+
+const SearchPrincipal = `
+<main class="main search-main">
+<section class="section hero-section search-p-section">
+    <div
+        class="hero-section__background search-p-section__background"
+    ></div>
+    <form class="search-p__form">
+        <input
+            class="search-p__input"
+            type="text"
+            placeholder="Search by Name"
+            id="name-search"
+        />
+        <button class="search-p__button" id="search-p__button">
+            <img
+                class="search-p__img"
+                src="/src/images/Search Icon.svg"
+                alt="Search Icon"
+            />
+        </button>
+    </form>
+</section>
+</main>
+
+<footer class="footer"></footer>`;
+
+const Home = `
+<main class="main">
+    <section class="section hero-section">
+        <img
+            src="/src/images/Rick&Morty-Name.svg"
+            alt="Rick & Morty"
+            class="hero-section__img"
+        />
+        <div class="hero-section__background"></div>
+    </section>
+
+    <section class="section about-section">
+        <img
+            src="/src/images/Rick&Morty - About Section.png"
+            alt="About Rick & Morty"
+            class="section__img"
+        />
+        <div class="about-section__container">
+            <h1 class="section__title about-section__title">
+                Rick & Morty
+            </h1>
+            <p class="section__text about-section__text">
+                Is an American adult animated science fiction sitcom
+                created by Justin Roiland and Dan Harmon. The series
+                follows the misadventures of cynical mad scientist
+                Rick Sanchez and his good-hearted but fretful
+                grandson Morty Smith, who split their time between
+                domestic life and interdimensional adventures.
+            </p>
+        </div>
+    </section>
+
+    <section class="section cta-section">
+        <div class="cta-section__container">
+            <h2 class="section__title cta-section__title">
+                Search about Rick & Morty
+            </h2>
+            <p class="section__text cta-section__text">
+                Search more about Rick & Morty here, where you can
+                find info about every character of this tv show.
+            </p>
+            <button class="search-button search-button--large" id="cta-section-button">
+                <img
+                    src="/src/images/Search Icon.svg"
+                    alt="Search Icon"
+                />
+                <span>Search</span>
+            </button>
+        </div>
+        <img
+            src="/src/images/Rick&Morty - CTA Section.png"
+            alt="Characters presentation"
+            class="section__img cta-section__img"
+        />
+    </section>
+</main>
+
+<footer class="footer"></footer>`;
 // Funciones
 
+const ShowPage = (page) => {
+    root.innerHTML = page;
+};
+
 if (location.pathname === '/' || location.pathname === '/index.html') {
+    ShowPage(Home);
     const header = document.getElementById('header');
     const headerText = document.querySelector('.header__text');
     window.addEventListener('scroll', () => {
@@ -17,6 +108,86 @@ if (location.pathname === '/' || location.pathname === '/index.html') {
         }
     });
 }
+
+const HomeLink = document.getElementById('home-link');
+const headerSearchButton = document.getElementById('header-search-button');
+let ctaSearchButton = document.getElementById('cta-section-button');
+
+const ChangeHeader = (element, action) => {
+    if (action == 'add') {
+        element.addEventListener('click', () => {
+            history.pushState({}, {}, '/search/');
+            ShowPage(SearchPrincipal);
+
+            headerSearchButton.classList.add('search-button--active');
+
+            const header = document.getElementById('header');
+            const headerText = document.querySelector('.header__text');
+
+            header.classList.add('header--scroll--active');
+            headerText.classList.add('header__text--active');
+
+            Form();
+        });
+    } else if (action === 'remove') {
+        if (location.pathname === '/') {
+            element.addEventListener('click', () => {
+                history.pushState({}, {}, '/');
+                ShowPage(Home);
+
+                headerSearchButton.classList.remove('search-button--active');
+
+                const header = document.getElementById('header');
+                const headerText = document.querySelector('.header__text');
+
+                header.classList.remove('header--scroll--active');
+                headerText.classList.remove('header__text--active');
+                // header.classList.remove('header--scroll');
+                // headerText.classList.remove('header__text--scroll');
+
+                ctaSearchButton = document.getElementById('cta-section-button');
+                ChangeHeader(ctaSearchButton, 'add');
+            });
+        }
+    }
+};
+
+ChangeHeader(HomeLink, 'remove');
+ChangeHeader(headerSearchButton, 'add');
+ChangeHeader(ctaSearchButton, 'add');
+
+window.onpopstate = () => {
+    if (location.pathname === '/') {
+        ShowPage(Home);
+        headerSearchButton.classList.remove('search-button--active');
+
+        const header = document.getElementById('header');
+        const headerText = document.querySelector('.header__text');
+
+        header.classList.remove('header--scroll--active');
+        headerText.classList.remove('header__text--active');
+    } else if (location.search) {
+        const interrogationRemoved = location.search.substring(1);
+        headerSearchButton.classList.add('search-button--active');
+
+        const header = document.getElementById('header');
+        const headerText = document.querySelector('.header__text');
+
+        header.classList.add('header--scroll--active');
+        headerText.classList.add('header__text--active');
+        ShowContent(interrogationRemoved);
+    } else if (location.pathname === '/search/') {
+        ShowPage(SearchPrincipal);
+        headerSearchButton.classList.add('search-button--active');
+
+        const header = document.getElementById('header');
+        const headerText = document.querySelector('.header__text');
+
+        header.classList.add('header--scroll--active');
+        headerText.classList.add('header__text--active');
+        Form();
+    }
+};
 
 // * Esta es una funcion que al dar click a un boton la pagina se va hacia arriba lentamente. Solo la hice de pratica para tal vez sirva para alguna oportunidad futura.
 
@@ -38,27 +209,17 @@ if (location.pathname === '/' || location.pathname === '/index.html') {
 //     }
 // };
 
-showContentButton.addEventListener('click', () => {
-    Form();
-});
-
 const Form = () => {
-    const FormContent = `
-    <form>
-        <input type="text" name="name" id="name-search">
-        <button type="submit" id="search-principal">Buscar de una vez</button>
-    </form>
-    `;
-    root.innerHTML = FormContent;
-    const SearchPrincipal = document.getElementById('search-principal');
     const Name = document.getElementById('name-search');
-    SearchPrincipal.addEventListener('click', () => {
+    const SearchPrincipalButton = document.getElementById('search-p__button');
+
+    SearchPrincipalButton.addEventListener('click', () => {
         ShowContent(Name.value);
+        history.pushState({}, {}, `/search/?${Name.value}`);
     });
 };
 
 const ShowContent = (name) => {
-    let Content = '';
     if (name) {
         Content = `
     <form>
@@ -83,7 +244,9 @@ const ShowContent = (name) => {
         <button type="submit" id="search-data-button">Search Data</button>
     </form>
     
-    <div id="results-container"></div>
+    <div id="results-container">
+        <div id="container"></div>
+    </div>
     <div id="pagination"></div>
     `;
     } else if (!name) {
@@ -110,7 +273,9 @@ const ShowContent = (name) => {
         <button type="submit" id="search-data-button">Search Data</button>
     </form>
     
-    <div id="results-container"></div>
+    <div id="results-container">
+        <div id="container"></div>
+    </div>
     <div id="pagination"></div>
     `;
     }
@@ -211,6 +376,8 @@ const capitalizeFirstLetter = (string) => {
 };
 
 const ShowData = async (data, ResultsContainer) => {
+    const Container = document.getElementById('container');
+    console.log(Container);
     if (Container.hasChildNodes() === false) {
         Container.classList.add('container');
         data.forEach((element) => {

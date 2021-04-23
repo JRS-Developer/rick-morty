@@ -9,25 +9,23 @@
     </head>
 
     <body>
-        <!-- <button id="showContent">Mostrar Contenido</button> -->
+        <header class="header" id="header">
+            <ul class="header__container">
+                <li class="header__item">
+                    <span class="header__text" id="home-link">Home</span>
+                </li>
+                <li class="header__item">
+                    <button id="header-search-button" class="search-button">
+                        <img
+                            src="/src/images/Search Icon.svg"
+                            alt="Search Icon"
+                        />
+                        <span>Search</span>
+                    </button>
+                </li>
+            </ul>
+        </header>
         <div id="root">
-            <header class="header" id="header">
-                <ul class="header__container">
-                    <li class="header__item">
-                        <span class="header__text">Home</span>
-                    </li>
-                    <li class="header__item">
-                        <button class="search-button">
-                            <img
-                                src="/src/images/Search Icon.svg"
-                                alt="Search Icon"
-                            />
-                            <span>Search</span>
-                        </button>
-                    </li>
-                </ul>
-            </header>
-
             <main class="main">
                 <section class="section hero-section">
                     <img
@@ -68,7 +66,10 @@
                             Search more about Rick & Morty here, where you can
                             find info about every character of this tv show.
                         </p>
-                        <button class="search-button search-button--large">
+                        <button
+                            class="search-button search-button--large"
+                            id="cta-section-button"
+                        >
                             <img
                                 src="/src/images/Search Icon.svg"
                                 alt="Search Icon"

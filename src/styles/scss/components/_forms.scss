@@ -1,0 +1,23 @@
+.search-p__form {
+    z-index: var(--z-normal);
+    display: flex;
+    width: 60%;
+    background-color: var(--primary-color);
+    height: 6rem;
+    justify-content: center;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0px 4px 4px 0px #00000040;
+}
+
+.search-p__form:focus-within {
+    border: 2px solid var(--primary-color-alt);
+}
+
+.search-p__input {
+    width: 80%;
+    flex: 1 1 auto;
+    border: 0;
+    padding: 0;
+    text-indent: 20px;
+}

@@ -118,3 +118,16 @@
         grid-row-start: auto;
     }
 }
+
+// #SEARCH PRINCIPAL SECTION
+
+.search-p-section {
+    padding-top: var(--header-height);
+    overflow: hidden;
+}
+
+.search-p-section__background {
+    background-image: url('/src/images/Rick&Morty\ -\ Search\ Background.png');
+    width: 120%;
+    height: 120%;
+}
