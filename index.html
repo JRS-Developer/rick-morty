@@ -27,8 +27,91 @@
             </ul>
         </header>
 
-        <div id="root"></div>
+        <div id="root">
+            <main class="main main-results">
+                <form class="filter-form">
+                    <input
+                        class="name-input"
+                        type="text"
+                        name="name"
+                        id="name"
+                        placeholder="Search"
+                    />
 
-        <script src="./src/scripts/index.js"></script>
+                    <input
+                        class="status-input"
+                        type="checkbox"
+                        name="status"
+                        id="alive"
+                        value="alive"
+                    />
+                    <label for="alive">Alive</label>
+                    <input
+                        class="status-input"
+                        type="checkbox"
+                        name="status"
+                        id="dead"
+                        value="dead"
+                    />
+                    <label for="dead">Dead</label>
+                    <input
+                        class="status-input"
+                        type="checkbox"
+                        name="status"
+                        id="unknown"
+                        value="unknown"
+                    />
+                    <label for="unknown">Unknown</label>
+
+                    <input
+                        class="gender-input"
+                        type="checkbox"
+                        name="gender"
+                        id="male"
+                        value="male"
+                    />
+                    <label for="male">Male</label>
+                    <input
+                        class="gender-input"
+                        type="checkbox"
+                        name="gender"
+                        id="female"
+                        value="female"
+                    />
+                    <label for="female">Female</label>
+                    <input
+                        class="gender-input"
+                        type="checkbox"
+                        name="gender"
+                        id="genderless"
+                        value="genderless"
+                    />
+                    <label for="genderless">Genderless</label>
+                    <input
+                        class="gender-input"
+                        type="checkbox"
+                        name="gender"
+                        id="unknown-gender"
+                        value="unknown"
+                    />
+                    <label for="unknown-gender">Unknown</label>
+
+                    <button
+                        class="search-data-button"
+                        type="submit"
+                        id="search-data-button"
+                    >
+                        Search Data
+                    </button>
+                </form>
+
+                <div id="results-container" class="results-container">
+                    <div id="container" class="container"></div>
+                    <div id="pagination" class="pagination"></div>
+                </div>
+            </main>
+        </div>
+
+        <!-- <script src="./src/scripts/index.js"></script> -->
     </body>
 </html>

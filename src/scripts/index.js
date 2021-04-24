@@ -114,7 +114,15 @@ const headerSearchButton = document.getElementById('header-search-button');
 let ctaSearchButton = document.getElementById('cta-section-button');
 
 const ChangeHeader = (element, action) => {
-    if (action == 'add') {
+    if (!element && action == 'add') {
+        headerSearchButton.classList.add('search-button--active');
+
+        const header = document.getElementById('header');
+        const headerText = document.querySelector('.header__text');
+
+        header.classList.add('header--scroll--active');
+        headerText.classList.add('header__text--active');
+    } else if (element && action == 'add') {
         element.addEventListener('click', () => {
             history.pushState({}, {}, '/search/');
             ShowPage(SearchPrincipal);
@@ -127,9 +135,17 @@ const ChangeHeader = (element, action) => {
             header.classList.add('header--scroll--active');
             headerText.classList.add('header__text--active');
 
-            Form();
+            CreateForm();
         });
-    } else if (action === 'remove') {
+    } else if (!element && action == 'remove') {
+        headerSearchButton.classList.remove('search-button--active');
+
+        const header = document.getElementById('header');
+        const headerText = document.querySelector('.header__text');
+
+        header.classList.remove('header--scroll--active');
+        headerText.classList.remove('header__text--active');
+    } else if (element && action === 'remove') {
         if (location.pathname === '/') {
             element.addEventListener('click', () => {
                 history.pushState({}, {}, '/');
@@ -159,57 +175,21 @@ ChangeHeader(ctaSearchButton, 'add');
 window.onpopstate = () => {
     if (location.pathname === '/') {
         ShowPage(Home);
-        headerSearchButton.classList.remove('search-button--active');
-
-        const header = document.getElementById('header');
-        const headerText = document.querySelector('.header__text');
-
-        header.classList.remove('header--scroll--active');
-        headerText.classList.remove('header__text--active');
+        ctaSearchButton = document.getElementById('cta-section-button');
+        ChangeHeader(ctaSearchButton, 'add');
+        ChangeHeader(false, 'remove');
     } else if (location.search) {
         const interrogationRemoved = location.search.substring(1);
-        headerSearchButton.classList.add('search-button--active');
-
-        const header = document.getElementById('header');
-        const headerText = document.querySelector('.header__text');
-
-        header.classList.add('header--scroll--active');
-        headerText.classList.add('header__text--active');
+        ChangeHeader(false, 'add');
         ShowContent(interrogationRemoved);
     } else if (location.pathname === '/search/') {
         ShowPage(SearchPrincipal);
-        headerSearchButton.classList.add('search-button--active');
-
-        const header = document.getElementById('header');
-        const headerText = document.querySelector('.header__text');
-
-        header.classList.add('header--scroll--active');
-        headerText.classList.add('header__text--active');
-        Form();
+        ChangeHeader(false, 'add');
+        CreateForm();
     }
 };
 
-// * Esta es una funcion que al dar click a un boton la pagina se va hacia arriba lentamente. Solo la hice de pratica para tal vez sirva para alguna oportunidad futura.
-
-// const searchButtons = document.querySelector('.search-button');
-// searchButtons.addEventListener('click', () => {
-//     const Timer = setInterval(() => {
-//         GoUp(Timer);
-//     }, 1);
-// });
-
-// const GoUp = (Timer) => {
-//     if (window.scrollY != 0) {
-//         const position = window.scrollY;
-//         let change = position - 20;
-//         window.scrollTo(change, change);
-//     } else if (window.scrollY == 0) {
-//         clearInterval(Timer);
-//         console.log('listo');
-//     }
-// };
-
-const Form = () => {
+const CreateForm = () => {
     const Name = document.getElementById('name-search');
     const SearchPrincipalButton = document.getElementById('search-p__button');
 
@@ -236,9 +216,9 @@ const ShowContent = (name) => {
                     <input class="gender-input" type="checkbox" name="gender" id="male" value="male">
                     <label for="male">Male</label>
                     <input class="gender-input" type="checkbox" name="gender" id="female" value="female">
-                    <label for="unknown">Female</label>
+                    <label for="female">Female</label>
                     <input class="gender-input" type="checkbox" name="gender" id="genderless" value="genderless">
-                    <label for="unknown">Genderless</label>
+                    <label for="genderless">Genderless</label>
                     <input class="gender-input" type="checkbox" name="gender" id="unknown-gender" value="unknown">
                     <label for="unknown-gender">Unknown</label>
             
@@ -267,9 +247,9 @@ const ShowContent = (name) => {
                     <input class="gender-input" type="checkbox" name="gender" id="male" value="male">
                     <label for="male">Male</label>
                     <input class="gender-input" type="checkbox" name="gender" id="female" value="female">
-                    <label for="unknown">Female</label>
+                    <label for="female">Female</label>
                     <input class="gender-input" type="checkbox" name="gender" id="genderless" value="genderless">
-                    <label for="unknown">Genderless</label>
+                    <label for="genderless">Genderless</label>
                     <input class="gender-input" type="checkbox" name="gender" id="unknown-gender" value="unknown">
                     <label for="unknown-gender">Unknown</label>
             
@@ -288,61 +268,50 @@ const ShowContent = (name) => {
 
     const SearchDataButton = document.getElementById('search-data-button');
 
+    SearchDataButton.addEventListener('click', (event) => {
+        searchData(event);
+    });
+
+    searchData(null);
+};
+
+const searchData = (event) => {
+    if (event) {
+        event.preventDefault();
+    }
+
     let searchName = document.getElementById('name');
     let statusInputs = document.querySelectorAll('.status-input');
     let genderInputs = document.querySelectorAll('.gender-input');
     const ResultsContainer = document.getElementById('results-container');
     const Pagination = document.getElementById('pagination');
 
-    SearchDataButton.addEventListener('click', (event) => {
-        searchData(
-            event,
-            statusInputs,
-            genderInputs,
-            searchName,
-            ResultsContainer,
-            Pagination
-        );
-    });
+    const Inputs = {
+        Name: searchName,
+        Status: statusInputs,
+        Gender: genderInputs,
+    };
 
-    searchData(
-        null,
-        statusInputs,
-        genderInputs,
-        searchName,
-        ResultsContainer,
-        Pagination
-    );
-};
-
-const searchData = (
-    event,
-    statusInputs,
-    genderInputs,
-    searchName,
-    ResultsContainer,
-    Pagination
-) => {
-    if (event) {
-        event.preventDefault();
-    }
     let statusCheck = [];
     let genderCheck = [];
-    if (statusInputs.length > 0) {
-        IsChecked(statusInputs, statusCheck);
+    if (Inputs.Status.length > 0) {
+        IsChecked(Inputs.Status, statusCheck);
     }
 
-    if (genderInputs.length > 0) {
-        IsChecked(genderInputs, genderCheck);
+    if (Inputs.Gender.length > 0) {
+        IsChecked(Inputs.Gender, genderCheck);
     }
 
     statusCheck = statusCheck.join('&status=');
     genderCheck = genderCheck.join('&gender=');
 
+    Inputs.Status = statusCheck;
+    Inputs.Gender = genderCheck;
+
     AskData(
-        searchName.value,
-        statusCheck,
-        genderCheck,
+        Inputs.Name.value,
+        Inputs.Status,
+        Inputs.Gender,
         1,
         ResultsContainer,
         Pagination
@@ -371,48 +340,47 @@ const AskData = async (
     ConfirmStatus(Response, name, status, gender, ResultsContainer, Pagination);
 };
 
-const capitalizeFirstLetter = (string) => {
-    if (string === 'unknown') {
-        return string[0].toUpperCase() + string.slice(1);
-    } else {
-        return string;
-    }
-};
-
 const ShowData = async (data, ResultsContainer) => {
     const Container = document.getElementById('container');
-    console.log(Container);
     if (Container.hasChildNodes() === false) {
         Container.classList.add('container');
-        data.forEach((element) => {
-            const Character = CreateCharacter(element);
+        data.forEach((content) => {
+            const Character = CreateCharacter(content);
             Container.insertAdjacentHTML('beforeend', Character);
 
             ResultsContainer.append(Container);
         });
     } else if (Container.hasChildNodes() === true) {
         Container.innerHTML = '';
-        data.forEach((element) => {
-            const Character = CreateCharacter(element);
+        data.forEach((content) => {
+            const Character = CreateCharacter(content);
             Container.insertAdjacentHTML('beforeend', Character);
         });
     }
 };
 
-const CreateCharacter = (element) => {
+const CreateCharacter = (content) => {
     const Character = `
     <div class="character">
-            <img src=${element.image} alt=${element.name}>
-            <h3>${capitalizeFirstLetter(element.name)}</h3>
+            <img src=${content.image} alt=${content.name}>
+            <h3>${capitalizeFirstLetter(content.name)}</h3>
             <p>${capitalizeFirstLetter(
-                element.status
-            )}  - ${capitalizeFirstLetter(element.species)}</p>
+                content.status
+            )}  - ${capitalizeFirstLetter(content.species)}</p>
             <p>First seen in:</p>
-            <p>${capitalizeFirstLetter(element.origin.name)}</p>
+            <p>${capitalizeFirstLetter(content.origin.name)}</p>
             <p>Last know location:</p>
-            <p>${capitalizeFirstLetter(element.location.name)}</p>
+            <p>${capitalizeFirstLetter(content.location.name)}</p>
             </div>`;
     return Character;
+};
+
+const capitalizeFirstLetter = (string) => {
+    if (string === 'unknown') {
+        return string[0].toUpperCase() + string.slice(1);
+    } else {
+        return string;
+    }
 };
 
 const ConfirmStatus = async (
@@ -464,14 +432,15 @@ const GetPaginationInfo = (
         let pageNumber = nextPage.match(number);
         let result = pageNumber[0];
         nextPage = parseInt(result);
-        let prevPage = nextPage - 2;
-        let actualPage = nextPage - 1;
+        const Pages = {
+            firstPage: firstPage,
+            prevPage: nextPage - 2,
+            actualPage: nextPage - 1,
+            nextPage: nextPage,
+            lastPage: lastPage,
+        };
         CreatePagination(
-            firstPage,
-            prevPage,
-            actualPage,
-            nextPage,
-            lastPage,
+            Pages,
             name,
             status,
             gender,
@@ -480,14 +449,15 @@ const GetPaginationInfo = (
         );
     } else if (nextPage == null) {
         let actualPage = lastPage;
-        let prevPage = actualPage - 1;
-        nextPage = lastPage;
+        const Pages = {
+            firstPage: firstPage,
+            prevPage: actualPage - 1,
+            actualPage: lastPage,
+            nextPage: lastPage,
+            lastPage: lastPage,
+        };
         CreatePagination(
-            firstPage,
-            prevPage,
-            actualPage,
-            nextPage,
-            lastPage,
+            Pages,
             name,
             status,
             gender,
@@ -498,11 +468,7 @@ const GetPaginationInfo = (
 };
 
 const CreatePagination = (
-    firstPage,
-    prevPage,
-    actualPage,
-    nextPage,
-    lastPage,
+    Pages,
     name,
     status,
     gender,
@@ -513,11 +479,11 @@ const CreatePagination = (
     Pagination.innerHTML = '';
 
     const PaginationItem = `
-    <div id="button-first-page">${firstPage}</div>
-    <div id="button-prev-page">${prevPage}</div>
-    <div id="button-actual-page">${actualPage}</div>
-    <div id="button-next-page">${nextPage}</div>
-    <div id="button-last-page">${lastPage}</div>
+    <div id="button-first-page">${Pages.firstPage}</div>
+    <div id="button-prev-page">${Pages.prevPage}</div>
+    <div id="button-actual-page">${Pages.actualPage}</div>
+    <div id="button-next-page">${Pages.nextPage}</div>
+    <div id="button-last-page">${Pages.lastPage}</div>
     `;
     paginationContainer.insertAdjacentHTML('beforeend', PaginationItem);
     Pagination.appendChild(paginationContainer);
