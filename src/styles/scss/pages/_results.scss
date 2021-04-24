@@ -1,4 +1,8 @@
 .main-results {
     display: grid;
     grid-template-columns: .5fr 1fr;
+    padding-top: 6rem;
+    width: 90%;
+    margin: 0 auto;
+    gap: 2rem;
 }
