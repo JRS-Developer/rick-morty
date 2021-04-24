@@ -543,19 +543,48 @@ const ShowData = async (data, ResultsContainer) => {
 };
 
 const CreateCharacter = (content) => {
+    const statusImage = checkImageStatus(content.status);
     const Character = `
     <div class="character">
-            <img src=${content.image} alt=${content.name}>
-            <h3>${capitalizeFirstLetter(content.name)}</h3>
-            <p>${capitalizeFirstLetter(
-                content.status
-            )}  - ${capitalizeFirstLetter(content.species)}</p>
-            <p>First seen in:</p>
-            <p>${capitalizeFirstLetter(content.origin.name)}</p>
-            <p>Last know location:</p>
-            <p>${capitalizeFirstLetter(content.location.name)}</p>
-            </div>`;
+                        <img class="character__img" src=${content.image} alt=${
+        content.name
+    } title=${content.name} />
+                        <div class="character-text">
+                            <h3 class="character__name">${capitalizeFirstLetter(
+                                content.name
+                            )}</h3>
+                            <p class="character__status">
+                                <img src=${statusImage} alt="${capitalizeFirstLetter(
+        content.status
+    )}" />
+                                ${capitalizeFirstLetter(
+                                    content.status
+                                )} - ${capitalizeFirstLetter(content.species)}
+                            </p>
+                            <p class="character__first">First seen in:</p>
+                            <p class="character__location">${capitalizeFirstLetter(
+                                content.origin.name
+                            )}</p>
+                            <p class="character__last">
+                                Last know location:
+                            </p>
+                            <p class="character__location">
+                                ${capitalizeFirstLetter(content.location.name)}
+                            </p>
+                        </div>
+                    </div>`;
+
     return Character;
+};
+
+const checkImageStatus = (status) => {
+    if (status == 'Alive') {
+        return `/src/images/Alive-Icon.svg`;
+    } else if (status == 'Dead') {
+        return '/src/images/Dead-Icon.svg';
+    } else if (status == 'unknown') {
+        return '/src/images/Unknow-Icon.svg';
+    }
 };
 
 const capitalizeFirstLetter = (string) => {
@@ -659,19 +688,37 @@ const CreatePagination = (
     Pagination
 ) => {
     let paginationContainer = document.createElement('div');
+    paginationContainer.classList.add('pagination');
     Pagination.innerHTML = '';
 
     const PaginationItem = `
-    <div id="button-first-page">${Pages.firstPage}</div>
-    <div id="button-prev-page">${Pages.prevPage}</div>
-    <div id="button-actual-page">${Pages.actualPage}</div>
-    <div id="button-next-page">${Pages.nextPage}</div>
-    <div id="button-last-page">${Pages.lastPage}</div>
+    <div id="button-first-page" class="button-change button-first-page">
+                        <img src="/src/images/First-Page.svg" alt="First Page">
+                    </div>
+                    <div id="button-prev-page" class="button-change button-prev-page">
+                        <span>${Pages.prevPage}</span>
+                    </div>
+                    <div id="button-actual-page" class="button-actual-page">
+                        <span>${Pages.actualPage}</span>
+                    </div>
+                    <div id="button-next-page" class="button-change button-next-page">
+                        <span>${Pages.nextPage}</span>
+                    </div>
+                    <div id="button-last-page" class="button-change button-last-page">
+                        <img src="/src/images/Last-Page.svg" alt="Last Page">
+                    </div>
     `;
     paginationContainer.insertAdjacentHTML('beforeend', PaginationItem);
     Pagination.appendChild(paginationContainer);
 
-    CreateChangeButtons(name, status, gender, ResultsContainer, Pagination);
+    CreateChangeButtons(
+        name,
+        status,
+        gender,
+        ResultsContainer,
+        Pagination,
+        Pages
+    );
 };
 
 const CreateChangeButtons = (
@@ -679,7 +726,8 @@ const CreateChangeButtons = (
     status,
     gender,
     ResultsContainer,
-    Pagination
+    Pagination,
+    Pages
 ) => {
     let ButtonFirstPage = document.getElementById('button-first-page');
     let ButtonPrevPage = document.getElementById('button-prev-page');
@@ -687,18 +735,17 @@ const CreateChangeButtons = (
     let ButtonLastPage = document.getElementById('button-last-page');
     let ButtonActualPage = document.getElementById('button-actual-page');
 
-    ButtonActualPage.style.backgroundColor = 'lightblue';
-
     RemoveButtonsConditional(
         ButtonFirstPage,
         ButtonPrevPage,
         ButtonNextPage,
         ButtonLastPage,
-        ButtonActualPage
+        ButtonActualPage,
+        Pages
     );
 
-    ButtonFirstPage.addEventListener('click', (e) => {
-        const index = parseInt(e.target.textContent);
+    ButtonFirstPage.addEventListener('click', () => {
+        const index = Pages.firstPage;
         AskData(name, status, gender, index, ResultsContainer, Pagination);
     });
     ButtonPrevPage.addEventListener('click', (e) => {
@@ -709,8 +756,8 @@ const CreateChangeButtons = (
         const index = parseInt(e.target.textContent);
         AskData(name, status, gender, index, ResultsContainer, Pagination);
     });
-    ButtonLastPage.addEventListener('click', (e) => {
-        const index = parseInt(e.target.textContent);
+    ButtonLastPage.addEventListener('click', () => {
+        const index = Pages.lastPage;
         AskData(name, status, gender, index, ResultsContainer, Pagination);
     });
 };
@@ -720,12 +767,13 @@ const RemoveButtonsConditional = (
     ButtonPrevPage,
     ButtonNextPage,
     ButtonLastPage,
-    ButtonActualPage
+    ButtonActualPage,
+    Pages
 ) => {
-    let ButtonFirstPageNumber = parseInt(ButtonFirstPage.textContent);
+    let ButtonFirstPageNumber = Pages.firstPage;
     let ButtonPrevPageNumber = parseInt(ButtonPrevPage.textContent);
     let ButtonNextPageNumber = parseInt(ButtonNextPage.textContent);
-    let ButtonLastPageNumber = parseInt(ButtonLastPage.textContent);
+    let ButtonLastPageNumber = Pages.lastPage;
     let ButtonActualPageNumber = parseInt(ButtonActualPage.textContent);
 
     if (ButtonPrevPageNumber <= 0) {

@@ -34,6 +34,7 @@
   --z-off-canvas: 100;
   /*Otros*/
   --shadow: 0px 7px 10px rgba(0, 0, 0, 0.25);
+  --shadow-search: 0px 4px 4px 0px hsla(0, 0%, 0%, 0.25);
   --header-height: 5rem; }
 
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
@@ -349,7 +350,8 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+p {
   padding: 0;
   margin: 0; }
 
@@ -426,7 +428,7 @@ input:focus-visible {
 
 .main-results {
   display: grid;
-  grid-template-columns: .5fr 1fr;
+  grid-template-columns: .2fr 1fr;
   padding-top: 6rem;
   width: 90%;
   margin: 0 auto;
@@ -481,6 +483,31 @@ input:focus-visible {
   width: auto;
   font-size: 1.1rem;
   position: relative; }
+
+.button-change {
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid transparent; }
+
+.button-change:hover {
+  border: 1px solid var(--primary-color-alt); }
+
+.button-actual-page {
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary-color-alt);
+  color: var(--primary-color); }
+
+.button-change :not(.button-actual-page) {
+  cursor: pointer; }
 
 .section {
   grid-template-columns: auto;
@@ -600,7 +627,7 @@ input:focus-visible {
   justify-content: center;
   border-radius: 30px;
   overflow: hidden;
-  box-shadow: 0px 4px 4px 0px #00000040; }
+  box-shadow: var(--shadow-search); }
 
 .search-p__form:focus-within {
   border: 2px solid var(--primary-color-alt); }
@@ -636,14 +663,20 @@ input:focus-visible {
 
 .container {
   display: grid;
-  grid-template-columns: 1fr 1fr; }
+  grid-template-columns: 1fr;
+  gap: 1.5rem; }
+  @media screen and (min-width: 768px) {
+    .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr; } }
 
 .results-container {
   box-shadow: 0px 4px 11px 0px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   padding: 2rem;
   display: flex;
-  flex-direction: column-reverse; }
+  flex-direction: column-reverse;
+  gap: 2rem; }
 
 .name-input {
   border: 1px solid #000000;
@@ -696,3 +729,48 @@ input:focus-visible {
 
 .input-container:hover .filter__input:not(:checked) ~ .checkbox {
   background-color: #eeee; }
+
+.character {
+  box-shadow: var(--shadow-search);
+  border-radius: 20px;
+  flex: 1 1 auto;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column; }
+  @media screen and (min-width: 1200px) {
+    .character {
+      flex-direction: row; } }
+
+.character-text {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  justify-content: center; }
+
+.character__first, .character__last {
+  color: rgba(0, 0, 0, 0.7); }
+
+.character__img {
+  width: 100%;
+  border-radius: 10px; }
+  @media screen and (min-width: 1200px) {
+    .character__img {
+      width: 50%; } }
+
+.character__status {
+  display: flex;
+  gap: .3rem;
+  margin-bottom: 1rem; }
+
+.character__status:hover > img {
+  transform: scale(1.5);
+  transition: all .5s; }
+
+.character__status > img {
+  transition: all .5s; }
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 1rem; }

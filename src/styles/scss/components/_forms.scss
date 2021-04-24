@@ -7,7 +7,7 @@
     justify-content: center;
     border-radius: 30px;
     overflow: hidden;
-    box-shadow: 0px 4px 4px 0px #00000040;
+    box-shadow: var(--shadow-search);
 }
 
 .search-p__form:focus-within {
@@ -54,7 +54,13 @@
 
 .container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+
+    @include from(m) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
 }
 
 .results-container {
@@ -63,6 +69,7 @@
     padding: 2rem;
     display: flex;
     flex-direction: column-reverse;
+    gap: 2rem;
 }
 
 .name-input {

@@ -65,3 +65,35 @@
     font-size: 1.1rem;
     position: relative;
 }
+
+
+// #BUTTONS CHANGE PAGE - #BUTTON FIRST PAGE
+
+.button-change {
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid transparent;
+}
+
+.button-change:hover {
+    border: 1px solid var(--primary-color-alt);
+}
+
+.button-actual-page {
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primary-color-alt);
+    color: var(--primary-color);
+}
+
+.button-change :not(.button-actual-page) {
+    cursor: pointer;
+}

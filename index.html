@@ -1,154 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="src/styles/css/styles.css" />
-        <title>Rick And Morty - JRS Developer</title>
-    </head>
 
-    <body>
-        <header class="header" id="header">
-            <ul class="header__container">
-                <li class="header__item">
-                    <span class="header__text" id="home-link">Home</span>
-                </li>
-                <li class="header__item">
-                    <button id="header-search-button" class="search-button">
-                        <img
-                            class="header-search--icon"
-                            src="/src/images/Search Icon.svg"
-                            alt="Search Icon"
-                        />
-                        <span>Search</span>
-                    </button>
-                </li>
-            </ul>
-        </header>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="src/styles/css/styles.css" />
+    <title>Rick And Morty - JRS Developer</title>
+</head>
 
-        <div id="root">
-            <main class="main main-results">
-                <form class="filter-form">
-                    <input
-                        class="name-input"
-                        type="text"
-                        name="name"
-                        id="name"
-                        placeholder="Search"
-                    />
+<body>
+    <header class="header" id="header">
+        <ul class="header__container">
+            <li class="header__item">
+                <span class="header__text" id="home-link">Home</span>
+            </li>
+            <li class="header__item">
+                <button id="header-search-button" class="search-button">
+                    <img class="header-search--icon" src="/src/images/Search Icon.svg" alt="Search Icon" />
+                    <span>Search</span>
+                </button>
+            </li>
+        </ul>
+    </header>
 
-                    <h3 class="filter-form__title">Status</h3>
-                    <div class="input-container">
-                        <input
-                            class="status-input filter__input"
-                            type="checkbox"
-                            name="status"
-                            id="alive"
-                            value="alive"
-                        />
-                        <span class="checkbox"></span>
-                        <span class="grow-checkbox"></span>
-                        <label for="alive">Alive</label>
-                    </div>
-                    <div class="input-container">
-                        <input
-                            class="status-input filter__input"
-                            type="checkbox"
-                            name="status"
-                            id="dead"
-                            value="dead"
-                        />
-                        <span class="checkbox"></span>
-                        <span class="grow-checkbox"></span>
-                        <label for="dead">Dead</label>
-                    </div>
+    <div id="root">
+        <main class="main main-results">
+            <form class="filter-form">
+                <input class="name-input" type="text" name="name" id="name" placeholder="Search" />
 
-                    <div class="input-container">
-                        <input
-                            class="status-input filter__input"
-                            type="checkbox"
-                            name="status"
-                            id="unknown"
-                            value="unknown"
-                        />
-                        <span class="checkbox"></span>
-                        <span class="grow-checkbox"></span>
-                        <label for="unknown">Unknown</label>
-                    </div>
-
-                    <h3 class="filter-form__title">Gender</h3>
-                    <div class="input-container">
-                        <input
-                            class="gender-input filter__input"
-                            type="checkbox"
-                            name="gender"
-                            id="male"
-                            value="male"
-                        />
-                        <span class="checkbox"></span>
-                        <span class="grow-checkbox"></span>
-                        <label for="male">Male</label>
-                    </div>
-                    <div class="input-container">
-                        <input
-                            class="gender-input filter__input"
-                            type="checkbox"
-                            name="gender"
-                            id="female"
-                            value="female"
-                        />
-                        <span class="checkbox"></span>
-                        <span class="grow-checkbox"></span>
-                        <label for="female">Female</label>
-                    </div>
-
-                    <div class="input-container">
-                        <input
-                            class="gender-input filter__input"
-                            type="checkbox"
-                            name="gender"
-                            id="genderless"
-                            value="genderless"
-                        />
-                        <span class="checkbox"></span>
-                        <span class="grow-checkbox"></span>
-                        <label for="genderless">Genderless</label>
-                    </div>
-                    <div class="input-container">
-                        <input
-                            class="gender-input filter__input"
-                            type="checkbox"
-                            name="gender"
-                            id="unknown-gender"
-                            value="unknown"
-                        />
-                        <span class="checkbox"></span>
-                        <span class="grow-checkbox"></span>
-                        <label for="unknown-gender">Unknown</label>
-                    </div>
-
-                    <button
-                        class="search-button search-data-button"
-                        type="submit"
-                        id="search-data-button"
-                    >
-                        <img
-                            src="/src/images/Search Icon.svg"
-                            alt="Search Icon"
-                            class="filter-search__icon"
-                        />
-                        <span>Filter</span>
-                    </button>
-                </form>
-
-                <div id="results-container" class="results-container">
-                    <div id="container" class="container"></div>
-                    <div id="pagination" class="pagination"></div>
+                <h3 class="filter-form__title">Status</h3>
+                <div class="input-container">
+                    <input class="status-input filter__input" type="checkbox" name="status" id="alive" value="alive" />
+                    <span class="checkbox"></span>
+                    <span class="grow-checkbox"></span>
+                    <label for="alive">Alive</label>
                 </div>
-            </main>
-        </div>
+                <div class="input-container">
+                    <input class="status-input filter__input" type="checkbox" name="status" id="dead" value="dead" />
+                    <span class="checkbox"></span>
+                    <span class="grow-checkbox"></span>
+                    <label for="dead">Dead</label>
+                </div>
 
-        <script src="./src/scripts/index.js"></script>
-    </body>
+                <div class="input-container">
+                    <input class="status-input filter__input" type="checkbox" name="status" id="unknown"
+                        value="unknown" />
+                    <span class="checkbox"></span>
+                    <span class="grow-checkbox"></span>
+                    <label for="unknown">Unknown</label>
+                </div>
+
+                <h3 class="filter-form__title">Gender</h3>
+                <div class="input-container">
+                    <input class="gender-input filter__input" type="checkbox" name="gender" id="male" value="male" />
+                    <span class="checkbox"></span>
+                    <span class="grow-checkbox"></span>
+                    <label for="male">Male</label>
+                </div>
+                <div class="input-container">
+                    <input class="gender-input filter__input" type="checkbox" name="gender" id="female"
+                        value="female" />
+                    <span class="checkbox"></span>
+                    <span class="grow-checkbox"></span>
+                    <label for="female">Female</label>
+                </div>
+
+                <div class="input-container">
+                    <input class="gender-input filter__input" type="checkbox" name="gender" id="genderless"
+                        value="genderless" />
+                    <span class="checkbox"></span>
+                    <span class="grow-checkbox"></span>
+                    <label for="genderless">Genderless</label>
+                </div>
+                <div class="input-container">
+                    <input class="gender-input filter__input" type="checkbox" name="gender" id="unknown-gender"
+                        value="unknown" />
+                    <span class="checkbox"></span>
+                    <span class="grow-checkbox"></span>
+                    <label for="unknown-gender">Unknown</label>
+                </div>
+
+                <button class="search-button search-data-button" type="submit" id="search-data-button">
+                    <img src="/src/images/Search Icon.svg" alt="Search Icon" class="filter-search__icon" />
+                    <span>Filter</span>
+                </button>
+            </form>
+
+            <div id="results-container" class="results-container">
+                <div id="pagination" class="pagination">
+                    <div id="button-first-page" class="button-change button-first-page">
+                        <img src="/src/images/First-Page.svg" alt="First Page">
+                    </div>
+                    <div id="button-prev-page" class="button-change button-prev-page">
+                        <span>3</span>
+                    </div>
+                    <div id="button-actual-page" class="button-actual-page">
+                        <span>4</span>
+                    </div>
+                    <div id="button-next-page" class="button-change button-next-page">
+                        <span>5</span>
+                    </div>
+                    <div id="button-last-page" class="button-change button-last-page">
+                        <img src="/src/images/Last-Page.svg" alt="Last Page">
+                    </div>
+                </div>
+                <div id="container" class="container">
+                    <div class="character">
+                        <img class="character__img" src="/src/images/1.jpg" alt="Rick Sanchez" title="Rick Sanchez" />
+                        <div class="character-text">
+                            <h3 class="character__name">Rick Sanchez</h3>
+                            <p class="character__status">
+                                <img src="/src/images/Alive-Icon.svg" alt="Alive" />
+                                Alive - Human
+                            </p>
+                            <p class="character__first">First seen in:</p>
+                            <p class="character__location">Earth (C-137)</p>
+                            <p class="character__last">
+                                Last know location:
+                            </p>
+                            <p class="character__location">
+                                Earth (Replacement Dimension)
+                            </p>
+                        </div>
+                    </div>
+                    <div class="character">
+                        <img class="character__img" src="/src/images/1.jpg" alt="Rick Sanchez" />
+                        <div class="character-text">
+                            <h3 class="character__name">Rick Sanchez</h3>
+                            <p class="character__status">Alive - Human</p>
+                            <p class="character__first">First seen in:</p>
+                            <p class="character__location">Earth (C-137)</p>
+                            <p class="character__last">
+                                Last know location:
+                            </p>
+                            <p class="character__location">
+                                Earth (Replacement Dimension)
+                            </p>
+                        </div>
+                    </div>
+                    <div class="character">
+                        <img class="character__img" src="/src/images/1.jpg" alt="Rick Sanchez" />
+                        <div class="character-text">
+                            <h3 class="character__name">Rick Sanchez</h3>
+                            <p class="character__status">Alive - Human</p>
+                            <p class="character__first">First seen in:</p>
+                            <p class="character__location">Earth (C-137)</p>
+                            <p class="character__last">
+                                Last know location:
+                            </p>
+                            <p class="character__location">
+                                Earth (Replacement Dimension)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="./src/scripts/index.js"></script>
+</body>
+
 </html>
