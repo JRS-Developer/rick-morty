@@ -166,23 +166,21 @@ const ChangeHeader = (element, action) => {
         header.classList.remove('header--scroll--active');
         headerText.classList.remove('header__text--active');
     } else if (element && action === 'remove') {
-        if (location.pathname === '/rick-morty/') {
-            element.addEventListener('click', () => {
-                history.pushState({}, {}, '/rick-morty/');
-                ShowPage(Home);
+        element.addEventListener('click', () => {
+            history.pushState({}, {}, '/rick-morty/');
+            ShowPage(Home);
 
-                headerSearchButton.classList.remove('search-button--active');
+            headerSearchButton.classList.remove('search-button--active');
 
-                const header = document.getElementById('header');
-                const headerText = document.querySelector('.header__text');
+            const header = document.getElementById('header');
+            const headerText = document.querySelector('.header__text');
 
-                header.classList.remove('header--scroll--active');
-                headerText.classList.remove('header__text--active');
+            header.classList.remove('header--scroll--active');
+            headerText.classList.remove('header__text--active');
 
-                ctaSearchButton = document.getElementById('cta-section-button');
-                ChangeHeader(ctaSearchButton, 'add');
-            });
-        }
+            ctaSearchButton = document.getElementById('cta-section-button');
+            ChangeHeader(ctaSearchButton, 'add');
+        });
     }
 };
 
