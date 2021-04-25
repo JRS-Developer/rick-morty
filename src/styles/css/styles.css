@@ -551,7 +551,7 @@ input:focus-visible {
   position: relative; }
 
 .hero-section__background {
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("/src/images/Rick&Morty-Background-min.png");
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("/rick-morty/src/images/Rick&Morty-Background-min.png");
   background-size: cover;
   position: absolute;
   top: 0;
@@ -622,7 +622,7 @@ input:focus-visible {
   overflow: hidden; }
 
 .search-p-section__background {
-  background-image: url("/src/images/Rick&Morty - Search Background.png");
+  background-image: url("/rick-morty/src/images/Rick&Morty - Search Background.png");
   width: 120%;
   height: 120%; }
 
