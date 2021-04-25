@@ -114,7 +114,7 @@ const ShowPage = (page) => {
     root.innerHTML = page;
 };
 
-if (location.pathname === '/' || location.pathname === '/index.html') {
+if (location.pathname === '/' || location.pathname === '/rick-morty/') {
     ShowPage(Home);
     const header = document.getElementById('header');
     const headerText = document.querySelector('.header__text');
@@ -166,9 +166,9 @@ const ChangeHeader = (element, action) => {
         header.classList.remove('header--scroll--active');
         headerText.classList.remove('header__text--active');
     } else if (element && action === 'remove') {
-        if (location.pathname === '/') {
+        if (location.pathname === '/rick-morty/') {
             element.addEventListener('click', () => {
-                history.pushState({}, {}, '/');
+                history.pushState({}, {}, '/rick-morty/');
                 ShowPage(Home);
 
                 headerSearchButton.classList.remove('search-button--active');
@@ -191,7 +191,7 @@ ChangeHeader(headerSearchButton, 'add');
 ChangeHeader(ctaSearchButton, 'add');
 
 window.onpopstate = () => {
-    if (location.pathname === '/') {
+    if (location.pathname === '/rick-morty/') {
         ShowPage(Home);
         ctaSearchButton = document.getElementById('cta-section-button');
         ChangeHeader(ctaSearchButton, 'add');
