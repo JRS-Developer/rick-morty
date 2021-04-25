@@ -3,16 +3,16 @@ const root = document.getElementById('root');
 let errors = 0;
 const AnswerOfErrors = [
     {
-        image: '/src/images/Errors-1.png',
+        image: '/rick-morty/src/images/Errors-1.png',
         phrase: 'Oh no, we have here a Jerry.',
     },
     {
-        image: '/src/images/Errors-2.png',
+        image: '/rick-morty/src/images/Errors-2.png',
         phrase:
             'Please Jerry, just make a correct search, We the Mr. Meeseeks are created to serve a singular purpose for which we will go to any lengths to fufill.',
     },
     {
-        image: '/src/images/Errors-3.png',
+        image: '/rick-morty/src/images/Errors-3.png',
         phrase:
             'Existence is pain to a Meeseeks, Jerry! And we will do anything to alleviate that pain!',
     },
@@ -39,7 +39,7 @@ const SearchPrincipal = `
         <button class="search-p__button" id="search-p__button">
             <img
                 class="search-p__img"
-                src="/src/images/Search Icon.svg"
+                src="/rick-morty/src/images/Search Icon.svg"
                 alt="Search Icon"
             />
         </button>
@@ -53,7 +53,7 @@ const Home = `
 <main class="main">
     <section class="section hero-section">
         <img
-            src="/src/images/Rick&Morty-Name.svg"
+            src="/rick-morty/src/images/Rick&Morty-Name.svg"
             alt="Rick & Morty"
             class="hero-section__img"
         />
@@ -62,7 +62,7 @@ const Home = `
 
     <section class="section about-section">
         <img
-            src="/src/images/Rick&Morty - About Section.png"
+            src="/rick-morty/src/images/Rick&Morty - About Section.png"
             alt="About Rick & Morty"
             class="section__img"
         />
@@ -92,7 +92,7 @@ const Home = `
             </p>
             <button class="search-button search-button--large" id="cta-section-button">
                 <img
-                    src="/src/images/Search Icon.svg"
+                    src="/rick-morty/src/images/Search Icon.svg"
                     alt="Search Icon"
                     class="cta-search--icon"
                 />
@@ -100,7 +100,7 @@ const Home = `
             </button>
         </div>
         <img
-            src="/src/images/Rick&Morty - CTA Section.png"
+            src="/rick-morty/src/images/Rick&Morty - CTA Section.png"
             alt="Characters presentation"
             class="section__img cta-section__img"
         />
@@ -222,7 +222,7 @@ const ShowContent = (name) => {
             <form class="filter-form" id="filter-form">
                 <div class="input-name__container">
                     <input class="name-input" type="text" name="name" id="name" placeholder="Search" value=${name} />
-                    <img class="input-name__img" id="filter-drop-down" src="/src/images/Drop-Down-Icon.svg"
+                    <img class="input-name__img" id="filter-drop-down" src="/rick-morty/src/images/Drop-Down-Icon.svg"
                         alt="Drop Down Icon">
                 </div>
 
@@ -279,7 +279,7 @@ const ShowContent = (name) => {
                 </div>
 
                 <button class="search-button search-data-button" type="submit" id="search-data-button">
-                    <img src="/src/images/Search Icon.svg" alt="Search Icon" class="filter-search__icon" />
+                    <img src="/rick-morty/src/images/Search Icon.svg" alt="Search Icon" class="filter-search__icon" />
                     <span>Filter</span>
                 </button>
             </form>
@@ -296,7 +296,7 @@ const ShowContent = (name) => {
             <form class="filter-form" id="filter-form">
                 <div class="input-name__container">
                     <input class="name-input" type="text" name="name" id="name" placeholder="Search"/>
-                    <img class="input-name__img" id="filter-drop-down" src="/src/images/Drop-Down-Icon.svg"
+                    <img class="input-name__img" id="filter-drop-down" src="/rick-morty/src/images/Drop-Down-Icon.svg"
                         alt="Drop Down Icon">
                 </div>
 
@@ -353,7 +353,7 @@ const ShowContent = (name) => {
                 </div>
 
                 <button class="search-button search-data-button" type="submit" id="search-data-button">
-                    <img src="/src/images/Search Icon.svg" alt="Search Icon" class="filter-search__icon" />
+                    <img src="/rick-morty/src/images/Search Icon.svg" alt="Search Icon" class="filter-search__icon" />
                     <span>Filter</span>
                 </button>
             </form>
@@ -518,11 +518,11 @@ const CreateCharacter = (content) => {
 
 const checkImageStatus = (status) => {
     if (status == 'Alive') {
-        return `/src/images/Alive-Icon.svg`;
+        return `/rick-morty/src/images/Alive-Icon.svg`;
     } else if (status == 'Dead') {
-        return '/src/images/Dead-Icon.svg';
+        return '/rick-morty/src/images/Dead-Icon.svg';
     } else if (status == 'unknown') {
-        return '/src/images/Unknow-Icon.svg';
+        return '/rick-morty/src/images/Unknow-Icon.svg';
     }
 };
 
@@ -662,7 +662,7 @@ const CreatePagination = (
 
     const PaginationItem = `
     <div id="button-first-page" class="button-change button-first-page">
-                        <img src="/src/images/First-Page.svg" alt="First Page">
+                        <img src="/rick-morty/src/images/First-Page.svg" alt="First Page">
                     </div>
                     <div id="button-prev-page" class="button-change button-prev-page">
                         <span>${Pages.prevPage}</span>
@@ -674,7 +674,7 @@ const CreatePagination = (
                         <span>${Pages.nextPage}</span>
                     </div>
                     <div id="button-last-page" class="button-change button-last-page">
-                        <img src="/src/images/Last-Page.svg" alt="Last Page">
+                        <img src="/rick-morty/src/images/Last-Page.svg" alt="Last Page">
                     </div>
     `;
     paginationContainer.insertAdjacentHTML('beforeend', PaginationItem);
