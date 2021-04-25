@@ -2,12 +2,16 @@
     width: 100%;
     display: flex;
     position: fixed;
-    justify-content: flex-end;
+    justify-content: center;
     height: var(--header-height);
     align-items: center;
     z-index: var(--z-front);
     background-color: none;
     transition: background-color .2s;
+
+    @include from(s) {
+        justify-content: flex-end;
+    }
 }
 
 .header--scroll {
@@ -24,9 +28,10 @@
 .header__container {
     display: flex;
     align-items: center;
-    padding: 0 2rem 0 0;
+    justify-content: center;
+    padding: 0 0 0 0;
     margin: 0;
-    gap: 3rem;
+    gap: 2rem;
 
     @include from(s) {
         padding: 0 4rem 0 0;

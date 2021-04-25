@@ -60,6 +60,10 @@
     @extend .search-button:hover
 }
 
+.search-p__button:active {
+    @extend .search-p__button:hover
+}
+
 .search-data-button {
     width: auto;
     font-size: 1.1rem;

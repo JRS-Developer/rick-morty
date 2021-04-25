@@ -371,12 +371,15 @@ input:focus-visible {
   width: 100%;
   display: flex;
   position: fixed;
-  justify-content: flex-end;
+  justify-content: center;
   height: var(--header-height);
   align-items: center;
   z-index: var(--z-front);
   background-color: none;
   transition: background-color .2s; }
+  @media screen and (min-width: 640px) {
+    .header {
+      justify-content: flex-end; } }
 
 .header--scroll, .header--scroll--active {
   background-color: var(--primary-color);
@@ -390,9 +393,10 @@ input:focus-visible {
 .header__container {
   display: flex;
   align-items: center;
-  padding: 0 2rem 0 0;
+  justify-content: center;
+  padding: 0 0 0 0;
   margin: 0;
-  gap: 3rem; }
+  gap: 2rem; }
   @media screen and (min-width: 640px) {
     .header__container {
       padding: 0 4rem 0 0; } }
@@ -449,11 +453,11 @@ input:focus-visible {
   gap: 1rem;
   cursor: pointer; }
 
-.search-button:hover, .search-p__button:hover {
+.search-button:hover, .search-p__button:hover, .search-p__button:active {
   background-color: var(--primary-color-alt);
   color: var(--primary-color);
   transition: all .2s; }
-  .search-button:hover img, .search-p__button:hover img {
+  .search-button:hover img, .search-p__button:hover img, .search-p__button:active img {
     filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(295deg) brightness(103%) contrast(104%); }
 
 .search-button--active {
@@ -479,7 +483,7 @@ input:focus-visible {
     .search-p__button {
       width: 15%; } }
 
-.search-p__button:hover {
+.search-p__button:hover, .search-p__button:active {
   background-color: var(--primary-color-alt); }
 
 .search-data-button {
@@ -625,13 +629,16 @@ input:focus-visible {
 .search-p__form {
   z-index: var(--z-normal);
   display: flex;
-  width: 60%;
+  width: 80%;
   background-color: var(--primary-color);
   height: 6rem;
   justify-content: center;
   border-radius: 30px;
   overflow: hidden;
   box-shadow: var(--shadow-search); }
+  @media screen and (min-width: 768px) {
+    .search-p__form {
+      width: 60%; } }
 
 .search-p__form:focus-within {
   border: 2px solid var(--primary-color-alt); }
@@ -715,7 +722,7 @@ input:focus-visible {
 
 .results-container__error > p, .container__error > p {
   text-align: center;
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   width: 60%; }
 
 .name-input {

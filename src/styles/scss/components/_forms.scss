@@ -1,13 +1,17 @@
 .search-p__form {
     z-index: var(--z-normal);
     display: flex;
-    width: 60%;
+    width: 80%;
     background-color: var(--primary-color);
     height: 6rem;
     justify-content: center;
     border-radius: 30px;
     overflow: hidden;
     box-shadow: var(--shadow-search);
+
+    @include from(m) {
+        width: 60%;
+    }
 }
 
 .search-p__form:focus-within {
@@ -114,13 +118,12 @@
 
 .results-container__error>p {
     text-align: center;
-    font-size: 1.1rem;
+    font-size: 1.5rem;
     width: 60%;
 }
 
 .name-input {
     border: 1px solid #000000;
-    // box-sizing: border-box;
     border-radius: 20px;
     height: 2.5rem;
     text-indent: 20px;

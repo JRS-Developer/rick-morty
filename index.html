@@ -25,77 +25,49 @@
     </header>
 
     <div id="root">
-        <main class="main main-results">
-            <form class="filter-form" id="filter-form">
-                <div class="input-name__container">
-                    <input class="name-input" type="text" name="name" id="name" placeholder="Search" value=${name} />
-                    <img class="input-name__img" id="filter-drop-down" src="/src/images/Drop-Down-Icon.svg"
-                        alt="Drop Down Icon">
-                </div>
+        <main class="main">
+            <section class="section hero-section">
+                <img src="/src/images/Rick&Morty-Name.svg" alt="Rick & Morty" class="hero-section__img" />
+                <div class="hero-section__background"></div>
+            </section>
 
-                <h3 class="filter-form__title">Status</h3>
-                <div class="input-container">
-                    <input class="status-input filter__input" type="checkbox" name="status" id="alive" value="alive" />
-                    <span class="checkbox"></span>
-                    <span class="grow-checkbox"></span>
-                    <label for="alive">Alive</label>
+            <section class="section about-section">
+                <img src="/src/images/Rick&Morty - About Section.png" alt="About Rick & Morty" class="section__img" />
+                <div class="about-section__container">
+                    <h1 class="section__title about-section__title">
+                        Rick & Morty
+                    </h1>
+                    <p class="section__text about-section__text">
+                        Is an American adult animated science fiction sitcom
+                        created by Justin Roiland and Dan Harmon. The series
+                        follows the misadventures of cynical mad scientist
+                        Rick Sanchez and his good-hearted but fretful
+                        grandson Morty Smith, who split their time between
+                        domestic life and interdimensional adventures.
+                    </p>
                 </div>
-                <div class="input-container">
-                    <input class="status-input filter__input" type="checkbox" name="status" id="dead" value="dead" />
-                    <span class="checkbox"></span>
-                    <span class="grow-checkbox"></span>
-                    <label for="dead">Dead</label>
-                </div>
+            </section>
 
-                <div class="input-container">
-                    <input class="status-input filter__input" type="checkbox" name="status" id="unknown"
-                        value="unknown" />
-                    <span class="checkbox"></span>
-                    <span class="grow-checkbox"></span>
-                    <label for="unknown">Unknown</label>
+            <section class="section cta-section">
+                <div class="cta-section__container">
+                    <h2 class="section__title cta-section__title">
+                        Search about Rick & Morty
+                    </h2>
+                    <p class="section__text cta-section__text">
+                        Search more about Rick & Morty here, where you can
+                        find info about every character of this tv show.
+                    </p>
+                    <button class="search-button search-button--large" id="cta-section-button">
+                        <img src="/src/images/Search Icon.svg" alt="Search Icon" class="cta-search--icon" />
+                        <span>Search</span>
+                    </button>
                 </div>
-
-                <h3 class="filter-form__title">Gender</h3>
-                <div class="input-container">
-                    <input class="gender-input filter__input" type="checkbox" name="gender" id="male" value="male" />
-                    <span class="checkbox"></span>
-                    <span class="grow-checkbox"></span>
-                    <label for="male">Male</label>
-                </div>
-                <div class="input-container">
-                    <input class="gender-input filter__input" type="checkbox" name="gender" id="female"
-                        value="female" />
-                    <span class="checkbox"></span>
-                    <span class="grow-checkbox"></span>
-                    <label for="female">Female</label>
-                </div>
-
-                <div class="input-container">
-                    <input class="gender-input filter__input" type="checkbox" name="gender" id="genderless"
-                        value="genderless" />
-                    <span class="checkbox"></span>
-                    <span class="grow-checkbox"></span>
-                    <label for="genderless">Genderless</label>
-                </div>
-                <div class="input-container">
-                    <input class="gender-input filter__input" type="checkbox" name="gender" id="unknown-gender"
-                        value="unknown" />
-                    <span class="checkbox"></span>
-                    <span class="grow-checkbox"></span>
-                    <label for="unknown-gender">Unknown</label>
-                </div>
-
-                <button class="search-button search-data-button" type="submit" id="search-data-button">
-                    <img src="/src/images/Search Icon.svg" alt="Search Icon" class="filter-search__icon" />
-                    <span>Filter</span>
-                </button>
-            </form>
-
-            <div id="results-container" class="results-container">
-                <div id="container" class="container"></div>
-                <div id="pagination" class="end"></div>
-            </div>
+                <img src="/src/images/Rick&Morty - CTA Section.png" alt="Characters presentation"
+                    class="section__img cta-section__img" />
+            </section>
         </main>
+
+        <footer class="footer"></footer>
     </div>
 
     <script src="./src/scripts/index.js"></script>

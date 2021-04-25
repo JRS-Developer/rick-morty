@@ -17,10 +17,7 @@ const AnswerOfErrors = [
             'Existence is pain to a Meeseeks, Jerry! And we will do anything to alleviate that pain!',
     },
 ];
-// const Container = document.createElement('div');
 let Content = '';
-
-// TODO Se necesita una respuesta cuando no hay resultados en la busqueda.
 
 // TODO Seria bueno colocar una funcion de sugerencias al hacer la busqueda
 
@@ -181,8 +178,6 @@ const ChangeHeader = (element, action) => {
 
                 header.classList.remove('header--scroll--active');
                 headerText.classList.remove('header__text--active');
-                // header.classList.remove('header--scroll');
-                // headerText.classList.remove('header__text--scroll');
 
                 ctaSearchButton = document.getElementById('cta-section-button');
                 ChangeHeader(ctaSearchButton, 'add');
@@ -723,19 +718,41 @@ const CreateChangeButtons = (
     ButtonFirstPage.addEventListener('click', () => {
         const index = Pages.firstPage;
         AskData(name, status, gender, index, ResultsContainer, Pagination);
+        const Timer = setInterval(() => {
+            GoUp(Timer);
+        }, 1);
     });
     ButtonPrevPage.addEventListener('click', (e) => {
         const index = parseInt(e.target.textContent);
         AskData(name, status, gender, index, ResultsContainer, Pagination);
+        const Timer = setInterval(() => {
+            GoUp(Timer);
+        }, 1);
     });
     ButtonNextPage.addEventListener('click', (e) => {
         const index = parseInt(e.target.textContent);
         AskData(name, status, gender, index, ResultsContainer, Pagination);
+        const Timer = setInterval(() => {
+            GoUp(Timer);
+        }, 1);
     });
     ButtonLastPage.addEventListener('click', () => {
         const index = Pages.lastPage;
         AskData(name, status, gender, index, ResultsContainer, Pagination);
+        const Timer = setInterval(() => {
+            GoUp(Timer);
+        }, 1);
     });
+};
+
+const GoUp = (Timer) => {
+    if (window.scrollY != 0) {
+        const position = window.scrollY;
+        let change = window.innerWidth > 640 ? position - 30 : position - 80;
+        window.scrollTo(change, change);
+    } else if (window.scrollY == 0) {
+        clearInterval(Timer);
+    }
 };
 
 const RemoveButtonsConditional = (
