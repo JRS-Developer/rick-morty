@@ -1,8 +1,12 @@
 .main-results {
     display: grid;
-    grid-template-columns: .2fr 1fr;
+    grid-template-columns: 1fr;
     padding-top: 6rem;
     width: 90%;
     margin: 0 auto;
     gap: 2rem;
+
+    @include from(s) {
+        grid-template-columns: .2fr 1fr;
+    }
 }

@@ -26,8 +26,12 @@
 
     <div id="root">
         <main class="main main-results">
-            <form class="filter-form">
-                <input class="name-input" type="text" name="name" id="name" placeholder="Search" />
+            <form class="filter-form" id="filter-form">
+                <div class="input-name__container">
+                    <input class="name-input" type="text" name="name" id="name" placeholder="Search" value=${name} />
+                    <img class="input-name__img" id="filter-drop-down" src="/src/images/Drop-Down-Icon.svg"
+                        alt="Drop Down Icon">
+                </div>
 
                 <h3 class="filter-form__title">Status</h3>
                 <div class="input-container">
@@ -88,73 +92,8 @@
             </form>
 
             <div id="results-container" class="results-container">
-                <div id="pagination" class="pagination">
-                    <div id="button-first-page" class="button-change button-first-page">
-                        <img src="/src/images/First-Page.svg" alt="First Page">
-                    </div>
-                    <div id="button-prev-page" class="button-change button-prev-page">
-                        <span>3</span>
-                    </div>
-                    <div id="button-actual-page" class="button-actual-page">
-                        <span>4</span>
-                    </div>
-                    <div id="button-next-page" class="button-change button-next-page">
-                        <span>5</span>
-                    </div>
-                    <div id="button-last-page" class="button-change button-last-page">
-                        <img src="/src/images/Last-Page.svg" alt="Last Page">
-                    </div>
-                </div>
-                <div id="container" class="container">
-                    <div class="character">
-                        <img class="character__img" src="/src/images/1.jpg" alt="Rick Sanchez" title="Rick Sanchez" />
-                        <div class="character-text">
-                            <h3 class="character__name">Rick Sanchez</h3>
-                            <p class="character__status">
-                                <img src="/src/images/Alive-Icon.svg" alt="Alive" />
-                                Alive - Human
-                            </p>
-                            <p class="character__first">First seen in:</p>
-                            <p class="character__location">Earth (C-137)</p>
-                            <p class="character__last">
-                                Last know location:
-                            </p>
-                            <p class="character__location">
-                                Earth (Replacement Dimension)
-                            </p>
-                        </div>
-                    </div>
-                    <div class="character">
-                        <img class="character__img" src="/src/images/1.jpg" alt="Rick Sanchez" />
-                        <div class="character-text">
-                            <h3 class="character__name">Rick Sanchez</h3>
-                            <p class="character__status">Alive - Human</p>
-                            <p class="character__first">First seen in:</p>
-                            <p class="character__location">Earth (C-137)</p>
-                            <p class="character__last">
-                                Last know location:
-                            </p>
-                            <p class="character__location">
-                                Earth (Replacement Dimension)
-                            </p>
-                        </div>
-                    </div>
-                    <div class="character">
-                        <img class="character__img" src="/src/images/1.jpg" alt="Rick Sanchez" />
-                        <div class="character-text">
-                            <h3 class="character__name">Rick Sanchez</h3>
-                            <p class="character__status">Alive - Human</p>
-                            <p class="character__first">First seen in:</p>
-                            <p class="character__location">Earth (C-137)</p>
-                            <p class="character__last">
-                                Last know location:
-                            </p>
-                            <p class="character__location">
-                                Earth (Replacement Dimension)
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                <div id="container" class="container"></div>
+                <div id="pagination" class="end"></div>
             </div>
         </main>
     </div>

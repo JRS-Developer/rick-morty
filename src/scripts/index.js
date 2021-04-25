@@ -1,7 +1,30 @@
 // Variables
 const root = document.getElementById('root');
+let errors = 0;
+const AnswerOfErrors = [
+    {
+        image: '/src/images/Errors-1.png',
+        phrase: 'Oh no, we have here a Jerry.',
+    },
+    {
+        image: '/src/images/Errors-2.png',
+        phrase:
+            'Please Jerry, just make a correct search, We the Mr. Meeseeks are created to serve a singular purpose for which we will go to any lengths to fufill.',
+    },
+    {
+        image: '/src/images/Errors-3.png',
+        phrase:
+            'Existence is pain to a Meeseeks, Jerry! And we will do anything to alleviate that pain!',
+    },
+];
 // const Container = document.createElement('div');
 let Content = '';
+
+// TODO Se necesita una respuesta cuando no hay resultados en la busqueda.
+
+// TODO Seria bueno colocar una funcion de sugerencias al hacer la busqueda
+
+// TODO falta hacer el footer
 
 const SearchPrincipal = `
 <main class="main search-main">
@@ -203,259 +226,177 @@ const ShowContent = (name) => {
     if (name) {
         Content = `
         <main class="main main-results">
-                <form class="filter-form">
-                    <input
-                        class="name-input"
-                        type="text"
-                        name="name"
-                        id="name"
-                        placeholder="Search"
-                        value=${name}
-                    />
-
-                    <h3 class="filter-form__title">Status</h3>
-                    <div class="input-container">
-                        <input
-                            class="status-input filter__input"
-                            type="checkbox"
-                            name="status"
-                            id="alive"
-                            value="alive"
-                        />
-                        <span class="checkbox"></span>
-                        <span class="grow-checkbox"></span>
-                        <label for="alive">Alive</label>
-                    </div>
-                    <div class="input-container">
-                        <input
-                            class="status-input filter__input"
-                            type="checkbox"
-                            name="status"
-                            id="dead"
-                            value="dead"
-                        />
-                        <span class="checkbox"></span>
-                        <span class="grow-checkbox"></span>
-                        <label for="dead">Dead</label>
-                    </div>
-
-                    <div class="input-container">
-                        <input
-                            class="status-input filter__input"
-                            type="checkbox"
-                            name="status"
-                            id="unknown"
-                            value="unknown"
-                        />
-                        <span class="checkbox"></span>
-                        <span class="grow-checkbox"></span>
-                        <label for="unknown">Unknown</label>
-                    </div>
-
-                    <h3 class="filter-form__title">Gender</h3>
-                    <div class="input-container">
-                        <input
-                            class="gender-input filter__input"
-                            type="checkbox"
-                            name="gender"
-                            id="male"
-                            value="male"
-                        />
-                        <span class="checkbox"></span>
-                        <span class="grow-checkbox"></span>
-                        <label for="male">Male</label>
-                    </div>
-                    <div class="input-container">
-                        <input
-                            class="gender-input filter__input"
-                            type="checkbox"
-                            name="gender"
-                            id="female"
-                            value="female"
-                        />
-                        <span class="checkbox"></span>
-                        <span class="grow-checkbox"></span>
-                        <label for="female">Female</label>
-                    </div>
-
-                    <div class="input-container">
-                        <input
-                            class="gender-input filter__input"
-                            type="checkbox"
-                            name="gender"
-                            id="genderless"
-                            value="genderless"
-                        />
-                        <span class="checkbox"></span>
-                        <span class="grow-checkbox"></span>
-                        <label for="genderless">Genderless</label>
-                    </div>
-                    <div class="input-container">
-                        <input
-                            class="gender-input filter__input"
-                            type="checkbox"
-                            name="gender"
-                            id="unknown-gender"
-                            value="unknown"
-                        />
-                        <span class="checkbox"></span>
-                        <span class="grow-checkbox"></span>
-                        <label for="unknown-gender">Unknown</label>
-                    </div>
-
-                    <button
-                        class="search-button search-data-button"
-                        type="submit"
-                        id="search-data-button"
-                    >
-                        <img
-                            src="/src/images/Search Icon.svg"
-                            alt="Search Icon"
-                            class="filter-search__icon"
-                        />
-                        <span>Filter</span>
-                    </button>
-                </form>
-
-                <div id="results-container" class="results-container">
-                    <div id="container" class="container"></div>
-                    <div id="pagination" class="pagination"></div>
+            <form class="filter-form" id="filter-form">
+                <div class="input-name__container">
+                    <input class="name-input" type="text" name="name" id="name" placeholder="Search" value=${name} />
+                    <img class="input-name__img" id="filter-drop-down" src="/src/images/Drop-Down-Icon.svg"
+                        alt="Drop Down Icon">
                 </div>
-            </main>
+
+                <h3 class="filter-form__title">Status</h3>
+                <div class="input-container">
+                    <input class="status-input filter__input" type="checkbox" name="status" id="alive" value="alive" />
+                    <span class="checkbox"></span>
+                    <span class="grow-checkbox"></span>
+                    <label for="alive">Alive</label>
+                </div>
+                <div class="input-container">
+                    <input class="status-input filter__input" type="checkbox" name="status" id="dead" value="dead" />
+                    <span class="checkbox"></span>
+                    <span class="grow-checkbox"></span>
+                    <label for="dead">Dead</label>
+                </div>
+
+                <div class="input-container">
+                    <input class="status-input filter__input" type="checkbox" name="status" id="unknown"
+                        value="unknown" />
+                    <span class="checkbox"></span>
+                    <span class="grow-checkbox"></span>
+                    <label for="unknown">Unknown</label>
+                </div>
+
+                <h3 class="filter-form__title">Gender</h3>
+                <div class="input-container">
+                    <input class="gender-input filter__input" type="checkbox" name="gender" id="male" value="male" />
+                    <span class="checkbox"></span>
+                    <span class="grow-checkbox"></span>
+                    <label for="male">Male</label>
+                </div>
+                <div class="input-container">
+                    <input class="gender-input filter__input" type="checkbox" name="gender" id="female"
+                        value="female" />
+                    <span class="checkbox"></span>
+                    <span class="grow-checkbox"></span>
+                    <label for="female">Female</label>
+                </div>
+
+                <div class="input-container">
+                    <input class="gender-input filter__input" type="checkbox" name="gender" id="genderless"
+                        value="genderless" />
+                    <span class="checkbox"></span>
+                    <span class="grow-checkbox"></span>
+                    <label for="genderless">Genderless</label>
+                </div>
+                <div class="input-container">
+                    <input class="gender-input filter__input" type="checkbox" name="gender" id="unknown-gender"
+                        value="unknown" />
+                    <span class="checkbox"></span>
+                    <span class="grow-checkbox"></span>
+                    <label for="unknown-gender">Unknown</label>
+                </div>
+
+                <button class="search-button search-data-button" type="submit" id="search-data-button">
+                    <img src="/src/images/Search Icon.svg" alt="Search Icon" class="filter-search__icon" />
+                    <span>Filter</span>
+                </button>
+            </form>
+
+            <div id="results-container" class="results-container">
+                <div id="container" class="container"></div>
+                <div id="pagination" class="end"></div>
+            </div>
+        </main>
     `;
     } else if (!name) {
         Content = `
         <main class="main main-results">
-                <form class="filter-form">
-                    <input
-                        class="name-input"
-                        type="text"
-                        name="name"
-                        id="name"
-                        placeholder="Search"
-                    />
-
-                    <h3 class="filter-form__title">Status</h3>
-                    <div class="input-container">
-                        <input
-                            class="status-input filter__input"
-                            type="checkbox"
-                            name="status"
-                            id="alive"
-                            value="alive"
-                        />
-                        <span class="checkbox"></span>
-                        <span class="grow-checkbox"></span>
-                        <label for="alive">Alive</label>
-                    </div>
-                    <div class="input-container">
-                        <input
-                            class="status-input filter__input"
-                            type="checkbox"
-                            name="status"
-                            id="dead"
-                            value="dead"
-                        />
-                        <span class="checkbox"></span>
-                        <span class="grow-checkbox"></span>
-                        <label for="dead">Dead</label>
-                    </div>
-
-                    <div class="input-container">
-                        <input
-                            class="status-input filter__input"
-                            type="checkbox"
-                            name="status"
-                            id="unknown"
-                            value="unknown"
-                        />
-                        <span class="checkbox"></span>
-                        <span class="grow-checkbox"></span>
-                        <label for="unknown">Unknown</label>
-                    </div>
-
-                    <h3 class="filter-form__title">Gender</h3>
-                    <div class="input-container">
-                        <input
-                            class="gender-input filter__input"
-                            type="checkbox"
-                            name="gender"
-                            id="male"
-                            value="male"
-                        />
-                        <span class="checkbox"></span>
-                        <span class="grow-checkbox"></span>
-                        <label for="male">Male</label>
-                    </div>
-                    <div class="input-container">
-                        <input
-                            class="gender-input filter__input"
-                            type="checkbox"
-                            name="gender"
-                            id="female"
-                            value="female"
-                        />
-                        <span class="checkbox"></span>
-                        <span class="grow-checkbox"></span>
-                        <label for="female">Female</label>
-                    </div>
-
-                    <div class="input-container">
-                        <input
-                            class="gender-input filter__input"
-                            type="checkbox"
-                            name="gender"
-                            id="genderless"
-                            value="genderless"
-                        />
-                        <span class="checkbox"></span>
-                        <span class="grow-checkbox"></span>
-                        <label for="genderless">Genderless</label>
-                    </div>
-                    <div class="input-container">
-                        <input
-                            class="gender-input filter__input"
-                            type="checkbox"
-                            name="gender"
-                            id="unknown-gender"
-                            value="unknown"
-                        />
-                        <span class="checkbox"></span>
-                        <span class="grow-checkbox"></span>
-                        <label for="unknown-gender">Unknown</label>
-                    </div>
-
-                    <button
-                        class="search-button search-data-button"
-                        type="submit"
-                        id="search-data-button"
-                    >
-                        <img
-                            src="/src/images/Search Icon.svg"
-                            alt="Search Icon"
-                            class="filter-search__icon"
-                        />
-                        <span>Filter</span>
-                    </button>
-                </form>
-
-                <div id="results-container" class="results-container">
-                    <div id="container" class="container"></div>
-                    <div id="pagination" class="pagination"></div>
+            <form class="filter-form" id="filter-form">
+                <div class="input-name__container">
+                    <input class="name-input" type="text" name="name" id="name" placeholder="Search"/>
+                    <img class="input-name__img" id="filter-drop-down" src="/src/images/Drop-Down-Icon.svg"
+                        alt="Drop Down Icon">
                 </div>
-            </main>
+
+                <h3 class="filter-form__title">Status</h3>
+                <div class="input-container">
+                    <input class="status-input filter__input" type="checkbox" name="status" id="alive" value="alive" />
+                    <span class="checkbox"></span>
+                    <span class="grow-checkbox"></span>
+                    <label for="alive">Alive</label>
+                </div>
+                <div class="input-container">
+                    <input class="status-input filter__input" type="checkbox" name="status" id="dead" value="dead" />
+                    <span class="checkbox"></span>
+                    <span class="grow-checkbox"></span>
+                    <label for="dead">Dead</label>
+                </div>
+
+                <div class="input-container">
+                    <input class="status-input filter__input" type="checkbox" name="status" id="unknown"
+                        value="unknown" />
+                    <span class="checkbox"></span>
+                    <span class="grow-checkbox"></span>
+                    <label for="unknown">Unknown</label>
+                </div>
+
+                <h3 class="filter-form__title">Gender</h3>
+                <div class="input-container">
+                    <input class="gender-input filter__input" type="checkbox" name="gender" id="male" value="male" />
+                    <span class="checkbox"></span>
+                    <span class="grow-checkbox"></span>
+                    <label for="male">Male</label>
+                </div>
+                <div class="input-container">
+                    <input class="gender-input filter__input" type="checkbox" name="gender" id="female"
+                        value="female" />
+                    <span class="checkbox"></span>
+                    <span class="grow-checkbox"></span>
+                    <label for="female">Female</label>
+                </div>
+
+                <div class="input-container">
+                    <input class="gender-input filter__input" type="checkbox" name="gender" id="genderless"
+                        value="genderless" />
+                    <span class="checkbox"></span>
+                    <span class="grow-checkbox"></span>
+                    <label for="genderless">Genderless</label>
+                </div>
+                <div class="input-container">
+                    <input class="gender-input filter__input" type="checkbox" name="gender" id="unknown-gender"
+                        value="unknown" />
+                    <span class="checkbox"></span>
+                    <span class="grow-checkbox"></span>
+                    <label for="unknown-gender">Unknown</label>
+                </div>
+
+                <button class="search-button search-data-button" type="submit" id="search-data-button">
+                    <img src="/src/images/Search Icon.svg" alt="Search Icon" class="filter-search__icon" />
+                    <span>Filter</span>
+                </button>
+            </form>
+
+            <div id="results-container" class="results-container">
+                <div id="container" class="container"></div>
+                <div id="pagination" class="end"></div>
+            </div>
+        </main>
     `;
     }
 
     root.innerHTML = Content;
 
     const SearchDataButton = document.getElementById('search-data-button');
+    const FilterDropDown = document.getElementById('filter-drop-down');
+
+    FilterDropDown.addEventListener('click', () => {
+        ShowDropDown();
+    });
 
     SearchDataButton.addEventListener('click', (event) => {
         searchData(event);
     });
 
     searchData(null);
+};
+
+const ShowDropDown = () => {
+    let filterForm = document.getElementById('filter-form');
+
+    if (filterForm.classList.contains('filter-form--open')) {
+        filterForm.classList.remove('filter-form--open');
+    } else if (filterForm.classList.contains('filter-form--open') === false) {
+        filterForm.classList.add('filter-form--open');
+    }
 };
 
 const searchData = (event) => {
@@ -468,6 +409,9 @@ const searchData = (event) => {
     let genderInputs = document.querySelectorAll('.gender-input');
     const ResultsContainer = document.getElementById('results-container');
     const Pagination = document.getElementById('pagination');
+    const filterForm = document.getElementById('filter-form');
+
+    filterForm.classList.remove('filter-form--open');
 
     const Inputs = {
         Name: searchName,
@@ -527,6 +471,7 @@ const ShowData = async (data, ResultsContainer) => {
     const Container = document.getElementById('container');
     if (Container.hasChildNodes() === false) {
         Container.classList.add('container');
+        Container.classList.remove('container__error');
         data.forEach((content) => {
             const Character = CreateCharacter(content);
             Container.insertAdjacentHTML('beforeend', Character);
@@ -535,6 +480,7 @@ const ShowData = async (data, ResultsContainer) => {
         });
     } else if (Container.hasChildNodes() === true) {
         Container.innerHTML = '';
+        Container.classList.remove('container__error');
         data.forEach((content) => {
             const Character = CreateCharacter(content);
             Container.insertAdjacentHTML('beforeend', Character);
@@ -605,7 +551,9 @@ const ConfirmStatus = async (
 ) => {
     switch (Response.status) {
         case 200: {
+            errors = 0;
             const Data = await Response.json();
+            ResultsContainer.classList.remove('results-container__error');
             GetPaginationInfo(
                 Data.info,
                 name,
@@ -618,11 +566,39 @@ const ConfirmStatus = async (
             break;
         }
         case 404:
-            console.log('Error 404');
+            errors = errors + 1;
+            ErrorShow(errors);
             break;
         default:
             console.log(Response.error);
             break;
+    }
+};
+
+const ErrorShow = (numOfErrors) => {
+    const ResultsContainer = document.getElementById('results-container');
+    const Container = document.getElementById('container');
+    const ErrorContainer = SelectErrorMessage(numOfErrors);
+    let Pagination = document.getElementById('pagination');
+
+    if (Pagination) {
+        Pagination.innerHTML = '';
+    }
+
+    ResultsContainer.classList.add('results-container__error');
+    Container.classList.add('container__error');
+
+    Container.innerHTML = ErrorContainer;
+};
+
+const SelectErrorMessage = (error) => {
+    if (error <= 3) {
+        let index = error - 1;
+        return `<img src=${AnswerOfErrors[index].image} />
+     <p>${AnswerOfErrors[index].phrase}</p>`;
+    } else if (error > 3) {
+        return `<img src=${AnswerOfErrors[-1].image} />
+    <p>${AnswerOfErrors[-1].phrase}</p>`;
     }
 };
 

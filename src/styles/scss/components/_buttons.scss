@@ -64,6 +64,7 @@
     width: auto;
     font-size: 1.1rem;
     position: relative;
+    min-height: 4rem;
 }
 
 
@@ -94,6 +95,6 @@
     color: var(--primary-color);
 }
 
-.button-change :not(.button-actual-page) {
+.pagination> :not(.button-actual-page) {
     cursor: pointer;
 }

@@ -428,11 +428,14 @@ input:focus-visible {
 
 .main-results {
   display: grid;
-  grid-template-columns: .2fr 1fr;
+  grid-template-columns: 1fr;
   padding-top: 6rem;
   width: 90%;
   margin: 0 auto;
   gap: 2rem; }
+  @media screen and (min-width: 640px) {
+    .main-results {
+      grid-template-columns: .2fr 1fr; } }
 
 .search-button {
   background-color: var(--primary-color);
@@ -482,7 +485,8 @@ input:focus-visible {
 .search-data-button {
   width: auto;
   font-size: 1.1rem;
-  position: relative; }
+  position: relative;
+  min-height: 4rem; }
 
 .button-change {
   width: 30px;
@@ -506,7 +510,7 @@ input:focus-visible {
   background-color: var(--primary-color-alt);
   color: var(--primary-color); }
 
-.button-change :not(.button-actual-page) {
+.pagination > :not(.button-actual-page) {
   cursor: pointer; }
 
 .section {
@@ -659,13 +663,33 @@ input:focus-visible {
   flex-direction: column;
   padding: 2rem;
   gap: 1.2rem;
+  max-height: 30px;
+  overflow: hidden;
+  transition: all 1s; }
+  @media screen and (min-width: 640px) {
+    .filter-form {
+      height: auto;
+      overflow: visible;
+      max-height: 80vh; } }
+
+.filter-form--open {
+  transition: all 1s;
   max-height: 80vh; }
 
 .container {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.5rem; }
+  gap: 1.5rem;
+  grid-template-rows: minmax(200px, max-content); }
   @media screen and (min-width: 768px) {
+    .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr; } }
+  @media screen and (min-width: 1024px) {
+    .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr; } }
+  @media screen and (min-width: 1200px) {
     .container {
       display: grid;
       grid-template-columns: 1fr 1fr; } }
@@ -674,15 +698,48 @@ input:focus-visible {
   box-shadow: 0px 4px 11px 0px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   padding: 2rem;
-  display: flex;
-  flex-direction: column-reverse;
-  gap: 2rem; }
+  gap: 2rem;
+  display: grid; }
+
+.end {
+  grid-row-start: 2; }
+
+.results-container__error, .container__error {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  display: flex; }
+
+.container__error {
+  display: flex; }
+
+.results-container__error > p, .container__error > p {
+  text-align: center;
+  font-size: 1.1rem;
+  width: 60%; }
 
 .name-input {
   border: 1px solid #000000;
   border-radius: 20px;
   height: 2.5rem;
-  text-indent: 20px; }
+  text-indent: 20px;
+  flex: 1 1 auto; }
+
+.input-name__container {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem; }
+
+.input-name__img {
+  transition: all .3s;
+  display: block; }
+  @media screen and (min-width: 640px) {
+    .input-name__img {
+      display: none; } }
+
+.input-name__img:active {
+  transform: scale(1.2);
+  transition: all .3s; }
 
 .input-container {
   position: relative;
