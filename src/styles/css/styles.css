@@ -355,6 +355,12 @@ p {
   padding: 0;
   margin: 0; }
 
+a {
+  color: black; }
+
+a:hover {
+  color: var(--primary-color-alt); }
+
 button {
   padding: 0;
   border: none;
@@ -425,6 +431,51 @@ input:focus-visible {
   @media screen and (min-width: 640px) {
     .header-search--icon {
       width: auto; } }
+
+.footer {
+  background-color: var(--primary-color-alt);
+  color: var(--primary-color);
+  padding: 4rem;
+  margin-top: 3rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4rem; }
+
+.footer a {
+  color: var(--primary-color); }
+
+.footer a:hover {
+  text-decoration-color: black;
+  opacity: 1; }
+
+.footer-references, .footer-info {
+  text-align: center;
+  flex: 1 1 auto;
+  max-width: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center; }
+  .footer-references > p, .footer-info > p {
+    width: auto;
+    opacity: 0.8; }
+  @media screen and (min-width: 768px) {
+    .footer-references, .footer-info {
+      max-width: 40%; } }
+
+.footer-social {
+  display: flex;
+  gap: 2rem; }
+  .footer-social img {
+    width: 40px;
+    height: 100%;
+    filter: invert(92%) sepia(1%) saturate(0%) hue-rotate(315deg) brightness(92%) contrast(89%);
+    position: relative;
+    transition: filter 0.5s; }
+  .footer-social img:hover {
+    filter: invert(97%) sepia(5%) saturate(7%) hue-rotate(345deg) brightness(106%) contrast(100%);
+    transition: filter 0.5s; }
 
 .search-main {
   height: 100vh;
@@ -624,7 +675,7 @@ input:focus-visible {
   overflow: hidden; }
 
 .search-p-section__background {
-  background-image: url("/rick-morty/src/images/Rick&Morty - Search Background.png");
+  background-image: url("/rick-morty/src/images/Rick&Morty - Search Background-min.png");
   width: 120%;
   height: 120%; }
 

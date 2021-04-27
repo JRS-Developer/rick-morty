@@ -19,8 +19,6 @@ const AnswerOfErrors = [
 ];
 let Content = '';
 
-// TODO Seria bueno colocar una funcion de sugerencias al hacer la busqueda
-
 // TODO falta hacer el footer
 
 const SearchPrincipal = `
@@ -47,7 +45,46 @@ const SearchPrincipal = `
 </section>
 </main>
 
-<footer class="footer"></footer>`;
+<footer class="footer">
+                <div class="footer-info">
+                    <h3>Contact Me:</h3>
+                    <p>
+                        This page has been made by me Jose Sánchez (JRS). You
+                        can contact me in my social medias:
+                    </p>
+                    <div class="footer-social">
+                        <a
+                            href="https://www.facebook.com/joseSF8/"
+                            target="_blank"
+                            ><img
+                                src="/src/images/facebook.svg"
+                                alt="Facebook"
+                                class="footer-social__img"
+                        /></a>
+                        <a
+                            href="https://www.instagram.com/jose_szz/"
+                            target="_blank"
+                        >
+                            <img
+                                src="/src/images/Instagram.svg"
+                                alt="Instagram"
+                                class="footer-social__img"
+                            />
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-references">
+                    <h3>Disclaimer</h3>
+                    <p>
+                        This page has been made with the objective of practice,
+                        the search data is received from the
+                        <a href="https://rickandmortyapi.com/" target="_blank"
+                            >Rick And Morty API</a
+                        >
+                        made by Axel Fuhrmann
+                    </p>
+                </div>
+            </footer>`;
 
 const Home = `
 <main class="main">
@@ -62,7 +99,7 @@ const Home = `
 
     <section class="section about-section">
         <img
-            src="/rick-morty/src/images/Rick&Morty - About Section.png"
+            src="/rick-morty/src/images/Rick&Morty - About Section-min.png"
             alt="About Rick & Morty"
             class="section__img"
         />
@@ -100,14 +137,53 @@ const Home = `
             </button>
         </div>
         <img
-            src="/rick-morty/src/images/Rick&Morty - CTA Section.png"
+            src="/rick-morty/src/images/Rick&Morty - CTA Section-min.png"
             alt="Characters presentation"
             class="section__img cta-section__img"
         />
     </section>
 </main>
 
-<footer class="footer"></footer>`;
+<footer class="footer">
+                <div class="footer-info">
+                    <h3>Contact Me:</h3>
+                    <p>
+                        This page has been made by me Jose Sánchez (JRS). You
+                        can contact me in my social medias:
+                    </p>
+                    <div class="footer-social">
+                        <a
+                            href="https://www.facebook.com/joseSF8/"
+                            target="_blank"
+                            ><img
+                                src="/src/images/facebook.svg"
+                                alt="Facebook"
+                                class="footer-social__img"
+                        /></a>
+                        <a
+                            href="https://www.instagram.com/jose_szz/"
+                            target="_blank"
+                        >
+                            <img
+                                src="/src/images/Instagram.svg"
+                                alt="Instagram"
+                                class="footer-social__img"
+                            />
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-references">
+                    <h3>Disclaimer</h3>
+                    <p>
+                        This page has been made with the objective of practice,
+                        the search data is received from the
+                        <a href="https://rickandmortyapi.com/" target="_blank"
+                            >Rick And Morty API</a
+                        >
+                        made by Axel Fuhrmann
+                    </p>
+                </div>
+            </footer>`;
 // Funciones
 
 const ShowPage = (page) => {

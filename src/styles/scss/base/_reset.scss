@@ -9,6 +9,14 @@ p {
     margin: 0;
 }
 
+a {
+    color: black;
+}
+
+a:hover {
+    color: var(--primary-color-alt);
+}
+
 button {
     padding: 0;
     border: none;
