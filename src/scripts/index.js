@@ -214,6 +214,7 @@ let ctaSearchButton = document.getElementById('cta-section-button');
 const ChangeHeader = (element, action) => {
     if (!element && action == 'add') {
         headerSearchButton.classList.add('search-button--active');
+        window.scrollTo(0, 0);
 
         const header = document.getElementById('header');
         const headerText = document.querySelector('.header__text');
@@ -224,6 +225,7 @@ const ChangeHeader = (element, action) => {
         element.addEventListener('click', () => {
             history.pushState({}, {}, '/search/');
             ShowPage(SearchPrincipal);
+            window.scrollTo(0, 0);
 
             headerSearchButton.classList.add('search-button--active');
 
@@ -237,6 +239,7 @@ const ChangeHeader = (element, action) => {
         });
     } else if (!element && action == 'remove') {
         headerSearchButton.classList.remove('search-button--active');
+        window.scrollTo(0, 0);
 
         const header = document.getElementById('header');
         const headerText = document.querySelector('.header__text');
@@ -247,6 +250,7 @@ const ChangeHeader = (element, action) => {
         element.addEventListener('click', () => {
             history.pushState({}, {}, '/rick-morty/');
             ShowPage(Home);
+            window.scrollTo(0, 0);
 
             headerSearchButton.classList.remove('search-button--active');
 
