@@ -436,7 +436,6 @@ input:focus-visible {
   background-color: var(--primary-color-alt);
   color: var(--primary-color);
   padding: 4rem;
-  margin-top: 3rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -643,6 +642,9 @@ input:focus-visible {
       justify-self: end;
       padding-right: 4rem;
       gap: 2rem; } }
+
+.cta-section {
+  margin-bottom: 3rem; }
 
 .cta-section__container {
   padding-left: 0;

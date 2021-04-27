@@ -23,7 +23,6 @@
 .section__text {
     line-height: 1.5rem;
     font-size: 1.1rem;
-
 }
 
 .section__img {
@@ -41,7 +40,8 @@
 }
 
 .hero-section__background {
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("/rick-morty/src/images/Rick&Morty-Background-min.png");
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+        url('/rick-morty/src/images/Rick&Morty-Background-min.png');
     background-size: cover;
     position: absolute;
     top: 0;
@@ -57,7 +57,6 @@
         width: auto;
     }
 }
-
 
 // #ABOUT SECTION
 
@@ -94,6 +93,10 @@
 
 // #CTA SECTION
 
+.cta-section {
+    margin-bottom: 3rem;
+}
+
 .cta-section__container {
     padding-left: 0;
     display: flex;
@@ -107,7 +110,6 @@
         width: 60%;
         flex-direction: column;
         gap: 2rem;
-
     }
 }
 
