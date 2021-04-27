@@ -27,7 +27,7 @@ const SearchPrincipal = `
     <div
         class="hero-section__background search-p-section__background"
     ></div>
-    <form class="search-p__form">
+    <form class="search-p__form" data-aos="fade-up">
         <input
             class="search-p__input"
             type="text"
@@ -300,7 +300,7 @@ const CreateForm = () => {
 const ShowContent = (name) => {
     if (name) {
         Content = `
-        <main class="main main-results">
+        <main class="main main-results" data-aos="fade-up">
             <form class="filter-form" id="filter-form">
                 <div class="input-name__container">
                     <input class="name-input" type="text" name="name" id="name" placeholder="Search" value=${name} />
@@ -374,7 +374,7 @@ const ShowContent = (name) => {
     `;
     } else if (!name) {
         Content = `
-        <main class="main main-results">
+        <main class="main main-results" data-aos="fade-up">
             <form class="filter-form" id="filter-form">
                 <div class="input-name__container">
                     <input class="name-input" type="text" name="name" id="name" placeholder="Search"/>
