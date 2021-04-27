@@ -1,21 +1,21 @@
-@import "utils/variables";
-@import "utils/mixins";
+@import 'utils/variables';
+@import 'utils/mixins';
 
-@import "vendors/normalize";
+@import 'vendors/normalize';
 
-@import "base/typography";
-@import "base/reset";
+@import 'base/typography';
+@import 'base/reset';
 
-@import "layout/grid";
-@import "layout/header";
-@import "layout/nav";
-@import "layout/footer";
+@import 'layout/grid';
+@import 'layout/header';
+@import 'layout/nav';
+@import 'layout/footer';
 
-@import "pages/search-principal";
-@import "pages/results";
+@import 'pages/search-principal';
+@import 'pages/results';
 
-@import "components/buttons";
-@import "components/sections";
-@import "components/forms";
-@import "components/character";
-@import "components/pagination";
+@import 'components/buttons';
+@import 'components/sections';
+@import 'components/forms';
+@import 'components/character';
+@import 'components/pagination';

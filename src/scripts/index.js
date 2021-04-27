@@ -101,6 +101,7 @@ const Home = `
         <img
             src="/rick-morty/src/images/Rick&Morty - About Section-min.png"
             alt="About Rick & Morty"
+            data-aos="fade-right"
             class="section__img"
         />
         <div class="about-section__container">
@@ -140,6 +141,7 @@ const Home = `
             src="/rick-morty/src/images/Rick&Morty - CTA Section-min.png"
             alt="Characters presentation"
             class="section__img cta-section__img"
+            data-aos="fade-left"
         />
     </section>
 </main>
