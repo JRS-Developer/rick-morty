@@ -57,7 +57,7 @@ const SearchPrincipal = `
                             href="https://www.facebook.com/joseSF8/"
                             target="_blank"
                             ><img
-                                src="/src/images/facebook.svg"
+                                src="/rick-morty/src/images/facebook.svg"
                                 alt="Facebook"
                                 class="footer-social__img"
                         /></a>
@@ -66,7 +66,7 @@ const SearchPrincipal = `
                             target="_blank"
                         >
                             <img
-                                src="/src/images/Instagram.svg"
+                                src="/rick-morty/src/images/Instagram.svg"
                                 alt="Instagram"
                                 class="footer-social__img"
                             />
@@ -156,7 +156,7 @@ const Home = `
                             href="https://www.facebook.com/joseSF8/"
                             target="_blank"
                             ><img
-                                src="/src/images/facebook.svg"
+                                src="/rick-morty/src/images/facebook.svg"
                                 alt="Facebook"
                                 class="footer-social__img"
                         /></a>
@@ -165,7 +165,7 @@ const Home = `
                             target="_blank"
                         >
                             <img
-                                src="/src/images/Instagram.svg"
+                                src="/rick-morty/src/images/Instagram.svg"
                                 alt="Instagram"
                                 class="footer-social__img"
                             />
