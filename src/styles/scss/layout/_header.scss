@@ -7,7 +7,7 @@
     align-items: center;
     z-index: var(--z-front);
     background-color: none;
-    transition: background-color .2s;
+    transition: background-color 0.2s;
 
     @include from(s) {
         justify-content: flex-end;
@@ -17,7 +17,7 @@
 .header--scroll {
     background-color: var(--primary-color);
     box-shadow: var(--shadow);
-    transition: all .2s;
+    transition: all 0.2s;
 }
 
 .header__item {
@@ -40,17 +40,16 @@
 
 .header__text {
     color: white;
-    transition: color, opacity .2s;
+    transition: color, opacity 0.2s;
     cursor: pointer;
-    opacity: .8;
+    opacity: 0.8;
 }
 
 .header__text--scroll {
     color: black;
-    transition: opacity, color .2s;
-    opacity: .7;
+    transition: opacity, color 0.2s;
+    opacity: 0.7;
 }
-
 
 .header__text:hover {
     color: var(--primary-color);
@@ -63,17 +62,13 @@
 }
 
 .header--scroll--active {
-    @extend .header--scroll
+    @extend .header--scroll;
 }
 
 .header__text--active {
-    @extend .header__text--scroll
+    @extend .header__text--scroll;
 }
 
 .header-search--icon {
-    width: 25px;
-
-    @include from(s) {
-        width: auto;
-    }
+    width: 20px;
 }
