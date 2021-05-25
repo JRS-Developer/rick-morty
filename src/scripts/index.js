@@ -8,13 +8,11 @@ const AnswerOfErrors = [
     },
     {
         image: '/rick-morty/src/images/Errors-2.png',
-        phrase:
-            'Please Jerry, just make a correct search, We the Mr. Meeseeks are created to serve a singular purpose for which we will go to any lengths to fufill.',
+        phrase: 'Please Jerry, just make a correct search, We the Mr. Meeseeks are created to serve a singular purpose for which we will go to any lengths to fufill.',
     },
     {
         image: '/rick-morty/src/images/Errors-3.png',
-        phrase:
-            'Existence is pain to a Meeseeks, Jerry! And we will do anything to alleviate that pain!',
+        phrase: 'Existence is pain to a Meeseeks, Jerry! And we will do anything to alleviate that pain!',
     },
 ];
 let Content = '';
@@ -36,6 +34,7 @@ const SearchPrincipal = `
         />
         <button class="search-p__button" id="search-p__button">
             <img
+            loading="lazy"
                 class="search-p__img"
                 src="/rick-morty/src/images/Search Icon.svg"
                 alt="Search Icon"
@@ -57,6 +56,7 @@ const SearchPrincipal = `
                             href="https://www.facebook.com/joseSF8/"
                             target="_blank"
                             ><img
+                            loading="lazy"
                                 src="/rick-morty/src/images/facebook.svg"
                                 alt="Facebook"
                                 class="footer-social__img"
@@ -66,6 +66,7 @@ const SearchPrincipal = `
                             target="_blank"
                         >
                             <img
+                            loading="lazy"
                                 src="/rick-morty/src/images/Instagram.svg"
                                 alt="Instagram"
                                 class="footer-social__img"
@@ -90,6 +91,7 @@ const Home = `
 <main class="main">
     <section class="section hero-section">
         <img
+        loading="lazy"
             src="/rick-morty/src/images/Rick&Morty-Name.svg"
             alt="Rick & Morty"
             class="hero-section__img"
@@ -99,6 +101,7 @@ const Home = `
 
     <section class="section about-section">
         <img
+        loading="lazy"
             src="/rick-morty/src/images/Rick&Morty - About Section-min.png"
             alt="About Rick & Morty"
             data-aos="fade-right"
@@ -130,6 +133,7 @@ const Home = `
             </p>
             <button class="search-button search-button--large" id="cta-section-button">
                 <img
+                loading="lazy"
                     src="/rick-morty/src/images/Search Icon.svg"
                     alt="Search Icon"
                     class="cta-search--icon"
@@ -138,6 +142,7 @@ const Home = `
             </button>
         </div>
         <img
+        loading="lazy"
             src="/rick-morty/src/images/Rick&Morty - CTA Section-min.png"
             alt="Characters presentation"
             class="section__img cta-section__img"
@@ -158,6 +163,7 @@ const Home = `
                             href="https://www.facebook.com/joseSF8/"
                             target="_blank"
                             ><img
+                            loading="lazy"
                                 src="/rick-morty/src/images/facebook.svg"
                                 alt="Facebook"
                                 class="footer-social__img"
@@ -167,6 +173,7 @@ const Home = `
                             target="_blank"
                         >
                             <img
+                            loading="lazy"
                                 src="/rick-morty/src/images/Instagram.svg"
                                 alt="Instagram"
                                 class="footer-social__img"
@@ -304,7 +311,8 @@ const ShowContent = (name) => {
             <form class="filter-form" id="filter-form">
                 <div class="input-name__container">
                     <input class="name-input" type="text" name="name" id="name" placeholder="Search" value=${name} />
-                    <img class="input-name__img" id="filter-drop-down" src="/rick-morty/src/images/Drop-Down-Icon.svg"
+                    <img
+                    loading="lazy" class="input-name__img" id="filter-drop-down" src="/rick-morty/src/images/Drop-Down-Icon.svg"
                         alt="Drop Down Icon">
                 </div>
 
@@ -361,7 +369,8 @@ const ShowContent = (name) => {
                 </div>
 
                 <button class="search-button search-data-button" type="submit" id="search-data-button">
-                    <img src="/rick-morty/src/images/Search Icon.svg" alt="Search Icon" class="filter-search__icon" />
+                    <img
+                    loading="lazy" src="/rick-morty/src/images/Search Icon.svg" alt="Search Icon" class="filter-search__icon" />
                     <span>Filter</span>
                 </button>
             </form>
@@ -378,7 +387,8 @@ const ShowContent = (name) => {
             <form class="filter-form" id="filter-form">
                 <div class="input-name__container">
                     <input class="name-input" type="text" name="name" id="name" placeholder="Search"/>
-                    <img class="input-name__img" id="filter-drop-down" src="/rick-morty/src/images/Drop-Down-Icon.svg"
+                    <img
+                    loading="lazy" class="input-name__img" id="filter-drop-down" src="/rick-morty/src/images/Drop-Down-Icon.svg"
                         alt="Drop Down Icon">
                 </div>
 
@@ -435,7 +445,8 @@ const ShowContent = (name) => {
                 </div>
 
                 <button class="search-button search-data-button" type="submit" id="search-data-button">
-                    <img src="/rick-morty/src/images/Search Icon.svg" alt="Search Icon" class="filter-search__icon" />
+                    <img
+                    loading="lazy" src="/rick-morty/src/images/Search Icon.svg" alt="Search Icon" class="filter-search__icon" />
                     <span>Filter</span>
                 </button>
             </form>
@@ -567,15 +578,17 @@ const CreateCharacter = (content) => {
     const statusImage = checkImageStatus(content.status);
     const Character = `
     <div class="character">
-                        <img class="character__img" src=${content.image} alt=${
-        content.name
-    } title=${content.name} />
+                        <img
+                        loading="lazy" class="character__img" src=${
+                            content.image
+                        } alt=${content.name} title=${content.name} />
                         <div class="character-text">
                             <h3 class="character__name">${capitalizeFirstLetter(
                                 content.name
                             )}</h3>
                             <p class="character__status">
-                                <img src=${statusImage} alt="${capitalizeFirstLetter(
+                                <img
+                                loading="lazy" src=${statusImage} alt="${capitalizeFirstLetter(
         content.status
     )}" />
                                 ${capitalizeFirstLetter(
@@ -669,10 +682,12 @@ const ErrorShow = (numOfErrors) => {
 const SelectErrorMessage = (error) => {
     if (error <= 3) {
         let index = error - 1;
-        return `<img src=${AnswerOfErrors[index].image} />
+        return `<img
+        loading="lazy" src=${AnswerOfErrors[index].image} />
      <p>${AnswerOfErrors[index].phrase}</p>`;
     } else if (error > 3) {
-        return `<img src=${AnswerOfErrors[-1].image} />
+        return `<img
+        loading="lazy" src=${AnswerOfErrors[-1].image} />
     <p>${AnswerOfErrors[-1].phrase}</p>`;
     }
 };
@@ -744,7 +759,8 @@ const CreatePagination = (
 
     const PaginationItem = `
     <div id="button-first-page" class="button-change button-first-page">
-                        <img src="/rick-morty/src/images/First-Page.svg" alt="First Page">
+                        <img
+                        loading="lazy" src="/rick-morty/src/images/First-Page.svg" alt="First Page">
                     </div>
                     <div id="button-prev-page" class="button-change button-prev-page">
                         <span>${Pages.prevPage}</span>
@@ -756,7 +772,8 @@ const CreatePagination = (
                         <span>${Pages.nextPage}</span>
                     </div>
                     <div id="button-last-page" class="button-change button-last-page">
-                        <img src="/rick-morty/src/images/Last-Page.svg" alt="Last Page">
+                        <img
+                        loading="lazy" src="/rick-morty/src/images/Last-Page.svg" alt="Last Page">
                     </div>
     `;
     paginationContainer.insertAdjacentHTML('beforeend', PaginationItem);
