@@ -4,7 +4,8 @@
   "description": "Only a page with the Api of Rick and Morty",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "node-sass -w src/styles/scss -o src/styles/css --output-style compressed"
   },
   "author": "Jose Sanchez - JRS Developer",
   "license": "ISC",

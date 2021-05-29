@@ -6,7 +6,7 @@
     height: var(--header-height);
     align-items: center;
     z-index: var(--z-front);
-    background-color: none;
+    background-color: transparent;
     transition: background-color 0.2s;
 
     @include from(s) {

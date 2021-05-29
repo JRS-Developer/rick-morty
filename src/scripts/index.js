@@ -36,7 +36,7 @@ const SearchPrincipal = `
             <img
             loading="lazy"
                 class="search-p__img"
-                src="/rick-morty/src/images/Search Icon.svg"
+                src="/rick-morty/src/images/Search-Icon.svg"
                 alt="Search Icon"
             />
         </button>
@@ -102,7 +102,7 @@ const Home = `
     <section class="section about-section">
         <img
         loading="lazy"
-            src="/rick-morty/src/images/Rick&Morty - About Section-min.png"
+            src="/rick-morty/src/images/Rick&Morty-About-Section-min.png"
             alt="About Rick & Morty"
             data-aos="fade-right"
             class="section__img"
@@ -134,7 +134,7 @@ const Home = `
             <button class="search-button search-button--large" id="cta-section-button">
                 <img
                 loading="lazy"
-                    src="/rick-morty/src/images/Search Icon.svg"
+                    src="/rick-morty/src/images/Search-Icon.svg"
                     alt="Search Icon"
                     class="cta-search--icon"
                 />
@@ -143,7 +143,7 @@ const Home = `
         </div>
         <img
         loading="lazy"
-            src="/rick-morty/src/images/Rick&Morty - CTA Section-min.png"
+            src="/rick-morty/src/images/Rick&Morty-CTA-Section-min.png"
             alt="Characters presentation"
             class="section__img cta-section__img"
             data-aos="fade-left"
@@ -370,7 +370,7 @@ const ShowContent = (name) => {
 
                 <button class="search-button search-data-button" type="submit" id="search-data-button">
                     <img
-                    loading="lazy" src="/rick-morty/src/images/Search Icon.svg" alt="Search Icon" class="filter-search__icon" />
+                    loading="lazy" src="/rick-morty/src/images/Search-Icon.svg" alt="Search Icon" class="filter-search__icon" />
                     <span>Filter</span>
                 </button>
             </form>
@@ -446,7 +446,7 @@ const ShowContent = (name) => {
 
                 <button class="search-button search-data-button" type="submit" id="search-data-button">
                     <img
-                    loading="lazy" src="/rick-morty/src/images/Search Icon.svg" alt="Search Icon" class="filter-search__icon" />
+                    loading="lazy" src="/rick-morty/src/images/Search-Icon.svg" alt="Search Icon" class="filter-search__icon" />
                     <span>Filter</span>
                 </button>
             </form>
