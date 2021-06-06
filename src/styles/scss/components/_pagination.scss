@@ -5,6 +5,11 @@
 	& > * {
 		margin: 0 1rem;
 	}
+
+	& :first-child,
+	& :last-child {
+		margin: 0;
+	}
 	@include from(s) {
 		gap: 1rem;
 		& > * {
