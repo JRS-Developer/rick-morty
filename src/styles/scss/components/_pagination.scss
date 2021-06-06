@@ -1,5 +1,14 @@
 .pagination {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
+	display: flex;
+	justify-content: center;
+
+	& > * {
+		margin: 0 1rem;
+	}
+	@include from(s) {
+		gap: 1rem;
+		& > * {
+			margin: 0;
+		}
+	}
 }
