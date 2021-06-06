@@ -53,7 +53,7 @@ const SearchPrincipal = `
                     </p>
                     <div class="footer-social">
                         <a
-                            href="https://www.facebook.com/joseSF8/"
+                            href="https://www.facebook.com/josejrsdev/"
                             target="_blank"
                             ><img
                             loading="lazy"
@@ -62,7 +62,7 @@ const SearchPrincipal = `
                                 class="footer-social__img"
                         /></a>
                         <a
-                            href="https://www.instagram.com/jose_szz/"
+                            href="https://www.instagram.com/jose_jsr_dev/"
                             target="_blank"
                         >
                             <img
@@ -160,7 +160,7 @@ const Home = `
                     </p>
                     <div class="footer-social">
                         <a
-                            href="https://www.facebook.com/joseSF8/"
+                            href="https://www.facebook.com/josejrsdev"
                             target="_blank"
                             ><img
                             loading="lazy"
@@ -169,7 +169,7 @@ const Home = `
                                 class="footer-social__img"
                         /></a>
                         <a
-                            href="https://www.instagram.com/jose_szz/"
+                            href="https://www.instagram.com/jose_jsr_dev/"
                             target="_blank"
                         >
                             <img
