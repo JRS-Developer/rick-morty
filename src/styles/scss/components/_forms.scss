@@ -1,205 +1,222 @@
 .search-p__form {
-    z-index: var(--z-normal);
-    display: flex;
-    width: 80%;
-    background-color: var(--primary-color);
-    height: 6rem;
-    justify-content: center;
-    border-radius: 30px;
-    overflow: hidden;
-    box-shadow: var(--shadow-search);
+	z-index: var(--z-normal);
+	display: flex;
+	width: 80%;
+	background-color: var(--primary-color);
+	height: 6rem;
+	justify-content: center;
+	border-radius: 30px;
+	overflow: hidden;
+	box-shadow: var(--shadow-search);
 
-    @include from(m) {
-        width: 60%;
-    }
+	@include from(m) {
+		width: 60%;
+	}
 }
 
 .search-p__form:focus-within {
-    border: 2px solid var(--primary-color-alt);
+	border: 2px solid var(--primary-color-alt);
 }
 
 .search-p__input {
-    width: 80%;
-    flex: 1 1 auto;
-    border: 0;
-    padding: 0;
-    text-indent: 20px;
-}
+	width: 80%;
+	flex: 1 1 auto;
+	border: 0;
+	padding: 0;
+	text-indent: 20px;
 
-.search-p__input:focus {
-    border: 0;
-}
+	&:focus {
+		border: 0;
+	}
 
-.search-p__input:focus-visible {
-    border: 0;
-    outline: 0;
+	&:focus-visible {
+		border: 0;
+		outline: 0;
+	}
 }
 
 .search-p__img {
-    width: 25px;
+	width: 25px;
 
-    @include from(s) {
-        width: auto;
-    }
+	@include from(s) {
+		width: auto;
+	}
 }
 
 // #FILTER FORM
 
 .filter-form {
-    box-shadow: 0px 4px 11px 0px hsla(0, 0%, 0%, 0.25);
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    padding: 2rem;
-    gap: 1.2rem;
-    max-height: 30px;
-    overflow: hidden;
-    transition: all 1s;
+	box-shadow: 0px 4px 11px 0px hsla(0, 0%, 0%, 0.25);
+	border-radius: 10px;
+	display: grid;
+	gap: 1.2rem;
+	padding: 2rem 1rem;
 
-    @include from(s) {
-        height: auto;
-        overflow: visible;
-        max-height: 80vh;
-    }
+	max-height: 30px;
+	overflow: hidden;
+	transition: all 1s;
 
-}
+	@include from(s) {
+		padding: 2rem;
 
-.filter-form--open {
-    transition: all 1s;
+		display: flex;
+		flex-direction: column;
+		height: auto;
+		overflow: visible;
+		max-height: 80vh;
+	}
 
-    max-height: 80vh;
+	&--open {
+		transition: all 1s;
+
+		max-height: 100vh;
+
+		@include from(s) {
+			max-height: 80vh;
+		}
+	}
 }
 
 .container {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    grid-template-rows: minmax(200px, max-content);
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 1.5rem;
+	grid-template-rows: minmax(200px, max-content);
 
-    @include from(m) {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-    }
+	@include from(m) {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+	}
 
-    @include from(l) {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-    }
+	@include from(l) {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+	}
 
-    @include from(lx) {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-    }
+	@include from(lx) {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+	}
 }
 
 .results-container {
-    box-shadow: 0px 4px 11px 0px hsla(0, 0%, 0%, 0.25);
-    border-radius: 10px;
-    padding: 2rem;
-    gap: 2rem;
-    display: grid;
+	box-shadow: 0px 4px 11px 0px hsla(0, 0%, 0%, 0.25);
+	border-radius: 10px;
+	padding: 2rem;
+	gap: 2rem;
+	display: grid;
 }
 
 .end {
-    grid-row-start: 2;
+	grid-row-start: 2;
 }
 
 .results-container__error {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	display: flex;
+
+	& > p {
+		text-align: center;
+		font-size: 1.5rem;
+		width: 60%;
+	}
 }
 
 .container__error {
-    @extend .results-container__error;
-    display: flex;
-}
-
-.results-container__error>p {
-    text-align: center;
-    font-size: 1.5rem;
-    width: 60%;
+	@extend .results-container__error;
+	display: flex;
 }
 
 .name-input {
-    border: 1px solid #000000;
-    border-radius: 20px;
-    height: 2.5rem;
-    text-indent: 20px;
-    flex: 1 1 auto;
+	border: 1px solid #000000;
+	border-radius: 20px;
+	height: 2.5rem;
+	text-indent: 20px;
+	flex: 1 1 auto;
 }
 
 .input-name__container {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
+	display: flex;
+	justify-content: space-between;
+	gap: 1rem;
+	width: 100%;
 }
 
 .input-name__img {
-    transition: all .3s;
-    display: block;
+	transition: all 0.3s;
+	display: block;
+	margin-left: 5px;
 
-    @include from(s) {
-        display: none;
-    }
-}
+	@include from(s) {
+		display: none;
+		margin-left: 0;
+	}
 
-.input-name__img:active {
-    transform: scale(1.2);
-    transition: all .3s;
+	&:active {
+		transform: scale(1.2);
+		transition: all 0.3s;
+	}
 }
 
 .input-container {
-    position: relative;
-    display: flex;
-    gap: .5rem;
+	position: relative;
+	display: flex;
+
+	@include from(s) {
+		gap: 0.5rem;
+	}
+
+	& > label {
+		width: 100%;
+		margin-left: 1rem;
+		@include from(s) {
+			margin: 0;
+		}
+	}
+
+	&:hover .filter__input:not(:checked) ~ .checkbox {
+		background-color: #eeee;
+	}
 }
 
 .filter-search__icon {
-    position: absolute;
-    left: 10%;
+	position: absolute;
+	left: 10%;
 }
 
 .filter__input {
-    width: 16px;
-    height: 16px;
-    opacity: 0;
-    z-index: var(--z-normal);
-}
+	width: 16px;
+	height: 16px;
+	opacity: 0;
+	z-index: var(--z-normal);
 
-.filter__input:checked~.grow-checkbox {
-    background-color: var(--primary-color-alt);
-    transform: scale(1);
+	&:checked ~ .grow-checkbox {
+		background-color: var(--primary-color-alt);
+		transform: scale(1);
+	}
 }
 
 .checkbox {
-    position: absolute;
-    width: 15px;
-    height: 15px;
-    left: 0;
-    top: 0;
-    border: 1px solid var(--primary-color-alt);
-    border-radius: 50%;
+	position: absolute;
+	width: 15px;
+	height: 15px;
+	left: 0;
+	top: 0;
+	border: 1px solid var(--primary-color-alt);
+	border-radius: 50%;
 }
 
 .grow-checkbox {
-    background-color: var(--primary-color-alt);
-    position: absolute;
-    width: 15px;
-    height: 15px;
-    transform: scale(0);
-    left: 0;
-    top: 0;
-    border-radius: 50%;
-    border: 1px solid var(--primary-color-alt);
-    transition: transform .5s;
-}
-
-.input-container>label {
-    width: 100%;
-}
-
-.input-container:hover .filter__input:not(:checked)~.checkbox {
-    background-color: #eeee;
+	background-color: var(--primary-color-alt);
+	position: absolute;
+	width: 15px;
+	height: 15px;
+	transform: scale(0);
+	left: 0;
+	top: 0;
+	border-radius: 50%;
+	border: 1px solid var(--primary-color-alt);
+	transition: transform 0.5s;
 }

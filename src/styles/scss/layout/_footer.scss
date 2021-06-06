@@ -1,60 +1,75 @@
 .footer {
-    background-color: var(--primary-color-alt);
-    color: var(--primary-color);
-    padding: 4rem;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 4rem;
+	background-color: var(--primary-color-alt);
+	color: var(--primary-color);
+	padding: 4rem;
+	display: grid;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 4rem;
+
+	@include from(s) {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
 }
 
 .footer a {
-    color: var(--primary-color);
+	color: var(--primary-color);
 }
 
 .footer a:hover {
-    text-decoration-color: black;
-    opacity: 1;
+	text-decoration-color: black;
+	opacity: 1;
 }
 
 .footer-references {
-    text-align: center;
-    flex: 1 1 auto;
-    max-width: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    align-items: center;
+	text-align: center;
+	flex: 1 1 auto;
+	max-width: none;
+	display: grid;
+	gap: 0.5rem;
 
-    & > p {
-        width: auto;
-        opacity: 0.8;
-    }
+	& > p {
+		width: auto;
+		opacity: 0.8;
+	}
 
-    @include from(m) {
-        max-width: 40%;
-    }
+	@include from(s) {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	@include from(m) {
+		max-width: 40%;
+	}
 }
 
 .footer-info {
-    @extend .footer-references;
+	@extend .footer-references;
 }
 
 .footer-social {
-    display: flex;
-    gap: 2rem;
-    & img {
-        width: 40px;
-        height: 100%;
-        filter: invert(92%) sepia(1%) saturate(0%) hue-rotate(315deg)
-            brightness(92%) contrast(89%);
-        position: relative;
-        transition: filter 0.5s;
-    }
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 2rem;
 
-    & img:hover {
-        filter: invert(97%) sepia(5%) saturate(7%) hue-rotate(345deg)
-            brightness(106%) contrast(100%);
-        transition: filter 0.5s;
-    }
+	@include from(s) {
+		display: flex;
+	}
+	& img {
+		width: 40px;
+		height: 100%;
+		filter: invert(92%) sepia(1%) saturate(0%) hue-rotate(315deg)
+			brightness(92%) contrast(89%);
+		position: relative;
+		transition: filter 0.5s;
+	}
+
+	& img:hover {
+		filter: invert(97%) sepia(5%) saturate(7%) hue-rotate(345deg)
+			brightness(106%) contrast(100%);
+		transition: filter 0.5s;
+	}
 }

@@ -2,18 +2,18 @@
 const root = document.getElementById('root');
 let errors = 0;
 const AnswerOfErrors = [
-    {
-        image: '/rick-morty/src/images/Errors-1.png',
-        phrase: 'Oh no, we have here a Jerry.',
-    },
-    {
-        image: '/rick-morty/src/images/Errors-2.png',
-        phrase: 'Please Jerry, just make a correct search, We the Mr. Meeseeks are created to serve a singular purpose for which we will go to any lengths to fufill.',
-    },
-    {
-        image: '/rick-morty/src/images/Errors-3.png',
-        phrase: 'Existence is pain to a Meeseeks, Jerry! And we will do anything to alleviate that pain!',
-    },
+	{
+		image: '/rick-morty/src/images/Errors-1.png',
+		phrase: 'Oh no, we have here a Jerry.',
+	},
+	{
+		image: '/rick-morty/src/images/Errors-2.png',
+		phrase: 'Please Jerry, just make a correct search, We the Mr. Meeseeks are created to serve a singular purpose for which we will go to any lengths to fufill.',
+	},
+	{
+		image: '/rick-morty/src/images/Errors-3.png',
+		phrase: 'Existence is pain to a Meeseeks, Jerry! And we will do anything to alleviate that pain!',
+	},
 ];
 let Content = '';
 
@@ -196,22 +196,22 @@ const Home = `
 // Funciones
 
 const ShowPage = (page) => {
-    root.innerHTML = page;
+	root.innerHTML = page;
 };
 
 if (location.pathname === '/' || location.pathname === '/rick-morty/') {
-    ShowPage(Home);
-    const header = document.getElementById('header');
-    const headerText = document.querySelector('.header__text');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 200) {
-            header.classList.add('header--scroll');
-            headerText.classList.add('header__text--scroll');
-        } else if (window.scrollY <= 200) {
-            header.classList.remove('header--scroll');
-            headerText.classList.remove('header__text--scroll');
-        }
-    });
+	ShowPage(Home);
+	const header = document.getElementById('header');
+	const headerText = document.querySelector('.header__text');
+	window.addEventListener('scroll', () => {
+		if (window.scrollY > 200) {
+			header.classList.add('header--scroll');
+			headerText.classList.add('header__text--scroll');
+		} else if (window.scrollY <= 200) {
+			header.classList.remove('header--scroll');
+			headerText.classList.remove('header__text--scroll');
+		}
+	});
 }
 
 const HomeLink = document.getElementById('home-link');
@@ -219,58 +219,58 @@ const headerSearchButton = document.getElementById('header-search-button');
 let ctaSearchButton = document.getElementById('cta-section-button');
 
 const ChangeHeader = (element, action) => {
-    if (!element && action == 'add') {
-        headerSearchButton.classList.add('search-button--active');
-        window.scrollTo(0, 0);
+	if (!element && action == 'add') {
+		headerSearchButton.classList.add('search-button--active');
+		window.scrollTo(0, 0);
 
-        const header = document.getElementById('header');
-        const headerText = document.querySelector('.header__text');
+		const header = document.getElementById('header');
+		const headerText = document.querySelector('.header__text');
 
-        header.classList.add('header--scroll--active');
-        headerText.classList.add('header__text--active');
-    } else if (element && action == 'add') {
-        element.addEventListener('click', () => {
-            history.pushState({}, {}, '/search/');
-            ShowPage(SearchPrincipal);
-            window.scrollTo(0, 0);
+		header.classList.add('header--scroll--active');
+		headerText.classList.add('header__text--active');
+	} else if (element && action == 'add') {
+		element.addEventListener('click', () => {
+			history.pushState({}, {}, '/search/');
+			ShowPage(SearchPrincipal);
+			window.scrollTo(0, 0);
 
-            headerSearchButton.classList.add('search-button--active');
+			headerSearchButton.classList.add('search-button--active');
 
-            const header = document.getElementById('header');
-            const headerText = document.querySelector('.header__text');
+			const header = document.getElementById('header');
+			const headerText = document.querySelector('.header__text');
 
-            header.classList.add('header--scroll--active');
-            headerText.classList.add('header__text--active');
+			header.classList.add('header--scroll--active');
+			headerText.classList.add('header__text--active');
 
-            CreateForm();
-        });
-    } else if (!element && action == 'remove') {
-        headerSearchButton.classList.remove('search-button--active');
-        window.scrollTo(0, 0);
+			CreateForm();
+		});
+	} else if (!element && action == 'remove') {
+		headerSearchButton.classList.remove('search-button--active');
+		window.scrollTo(0, 0);
 
-        const header = document.getElementById('header');
-        const headerText = document.querySelector('.header__text');
+		const header = document.getElementById('header');
+		const headerText = document.querySelector('.header__text');
 
-        header.classList.remove('header--scroll--active');
-        headerText.classList.remove('header__text--active');
-    } else if (element && action === 'remove') {
-        element.addEventListener('click', () => {
-            history.pushState({}, {}, '/rick-morty/');
-            ShowPage(Home);
-            window.scrollTo(0, 0);
+		header.classList.remove('header--scroll--active');
+		headerText.classList.remove('header__text--active');
+	} else if (element && action === 'remove') {
+		element.addEventListener('click', () => {
+			history.pushState({}, {}, '/rick-morty/');
+			ShowPage(Home);
+			window.scrollTo(0, 0);
 
-            headerSearchButton.classList.remove('search-button--active');
+			headerSearchButton.classList.remove('search-button--active');
 
-            const header = document.getElementById('header');
-            const headerText = document.querySelector('.header__text');
+			const header = document.getElementById('header');
+			const headerText = document.querySelector('.header__text');
 
-            header.classList.remove('header--scroll--active');
-            headerText.classList.remove('header__text--active');
+			header.classList.remove('header--scroll--active');
+			headerText.classList.remove('header__text--active');
 
-            ctaSearchButton = document.getElementById('cta-section-button');
-            ChangeHeader(ctaSearchButton, 'add');
-        });
-    }
+			ctaSearchButton = document.getElementById('cta-section-button');
+			ChangeHeader(ctaSearchButton, 'add');
+		});
+	}
 };
 
 ChangeHeader(HomeLink, 'remove');
@@ -278,35 +278,35 @@ ChangeHeader(headerSearchButton, 'add');
 ChangeHeader(ctaSearchButton, 'add');
 
 window.onpopstate = () => {
-    if (location.pathname === '/rick-morty/') {
-        ShowPage(Home);
-        ctaSearchButton = document.getElementById('cta-section-button');
-        ChangeHeader(ctaSearchButton, 'add');
-        ChangeHeader(false, 'remove');
-    } else if (location.search) {
-        const interrogationRemoved = location.search.substring(1);
-        ChangeHeader(false, 'add');
-        ShowContent(interrogationRemoved);
-    } else if (location.pathname === '/search/') {
-        ShowPage(SearchPrincipal);
-        ChangeHeader(false, 'add');
-        CreateForm();
-    }
+	if (location.pathname === '/rick-morty/') {
+		ShowPage(Home);
+		ctaSearchButton = document.getElementById('cta-section-button');
+		ChangeHeader(ctaSearchButton, 'add');
+		ChangeHeader(false, 'remove');
+	} else if (location.search) {
+		const interrogationRemoved = location.search.substring(1);
+		ChangeHeader(false, 'add');
+		ShowContent(interrogationRemoved);
+	} else if (location.pathname === '/search/') {
+		ShowPage(SearchPrincipal);
+		ChangeHeader(false, 'add');
+		CreateForm();
+	}
 };
 
 const CreateForm = () => {
-    const Name = document.getElementById('name-search');
-    const SearchPrincipalButton = document.getElementById('search-p__button');
+	const Name = document.getElementById('name-search');
+	const SearchPrincipalButton = document.getElementById('search-p__button');
 
-    SearchPrincipalButton.addEventListener('click', () => {
-        ShowContent(Name.value);
-        history.pushState({}, {}, `/search/?${Name.value}`);
-    });
+	SearchPrincipalButton.addEventListener('click', () => {
+		ShowContent(Name.value);
+		history.pushState({}, {}, `/search/?${Name.value}`);
+	});
 };
 
 const ShowContent = (name) => {
-    if (name) {
-        Content = `
+	if (name) {
+		Content = `
         <main class="main main-results" data-aos="fade-up">
             <form class="filter-form" id="filter-form">
                 <div class="input-name__container">
@@ -381,8 +381,8 @@ const ShowContent = (name) => {
             </div>
         </main>
     `;
-    } else if (!name) {
-        Content = `
+	} else if (!name) {
+		Content = `
         <main class="main main-results" data-aos="fade-up">
             <form class="filter-form" id="filter-form">
                 <div class="input-name__container">
@@ -457,148 +457,148 @@ const ShowContent = (name) => {
             </div>
         </main>
     `;
-    }
+	}
 
-    root.innerHTML = Content;
+	root.innerHTML = Content;
 
-    const SearchDataButton = document.getElementById('search-data-button');
-    const FilterDropDown = document.getElementById('filter-drop-down');
+	const SearchDataButton = document.getElementById('search-data-button');
+	const FilterDropDown = document.getElementById('filter-drop-down');
 
-    FilterDropDown.addEventListener('click', () => {
-        ShowDropDown();
-    });
+	FilterDropDown.addEventListener('click', () => {
+		ShowDropDown();
+	});
 
-    SearchDataButton.addEventListener('click', (event) => {
-        searchData(event);
-    });
+	SearchDataButton.addEventListener('click', (event) => {
+		searchData(event);
+	});
 
-    searchData(null);
+	searchData(null);
 };
 
 const ShowDropDown = () => {
-    let filterForm = document.getElementById('filter-form');
+	let filterForm = document.getElementById('filter-form');
 
-    if (filterForm.classList.contains('filter-form--open')) {
-        filterForm.classList.remove('filter-form--open');
-    } else if (filterForm.classList.contains('filter-form--open') === false) {
-        filterForm.classList.add('filter-form--open');
-    }
+	if (filterForm.classList.contains('filter-form--open')) {
+		filterForm.classList.remove('filter-form--open');
+	} else if (filterForm.classList.contains('filter-form--open') === false) {
+		filterForm.classList.add('filter-form--open');
+	}
 };
 
 const searchData = (event) => {
-    if (event) {
-        event.preventDefault();
-    }
+	if (event) {
+		event.preventDefault();
+	}
 
-    let searchName = document.getElementById('name');
-    let statusInputs = document.querySelectorAll('.status-input');
-    let genderInputs = document.querySelectorAll('.gender-input');
-    const ResultsContainer = document.getElementById('results-container');
-    const Pagination = document.getElementById('pagination');
-    const filterForm = document.getElementById('filter-form');
+	let searchName = document.getElementById('name');
+	let statusInputs = document.querySelectorAll('.status-input');
+	let genderInputs = document.querySelectorAll('.gender-input');
+	const ResultsContainer = document.getElementById('results-container');
+	const Pagination = document.getElementById('pagination');
+	const filterForm = document.getElementById('filter-form');
 
-    filterForm.classList.remove('filter-form--open');
+	filterForm.classList.remove('filter-form--open');
 
-    const Inputs = {
-        Name: searchName,
-        Status: statusInputs,
-        Gender: genderInputs,
-    };
+	const Inputs = {
+		Name: searchName,
+		Status: statusInputs,
+		Gender: genderInputs,
+	};
 
-    let statusCheck = [];
-    let genderCheck = [];
-    if (Inputs.Status.length > 0) {
-        IsChecked(Inputs.Status, statusCheck);
-    }
+	let statusCheck = [];
+	let genderCheck = [];
+	if (Inputs.Status.length > 0) {
+		IsChecked(Inputs.Status, statusCheck);
+	}
 
-    if (Inputs.Gender.length > 0) {
-        IsChecked(Inputs.Gender, genderCheck);
-    }
+	if (Inputs.Gender.length > 0) {
+		IsChecked(Inputs.Gender, genderCheck);
+	}
 
-    statusCheck = statusCheck.join('&status=');
-    genderCheck = genderCheck.join('&gender=');
+	statusCheck = statusCheck.join('&status=');
+	genderCheck = genderCheck.join('&gender=');
 
-    Inputs.Status = statusCheck;
-    Inputs.Gender = genderCheck;
+	Inputs.Status = statusCheck;
+	Inputs.Gender = genderCheck;
 
-    AskData(
-        Inputs.Name.value,
-        Inputs.Status,
-        Inputs.Gender,
-        1,
-        ResultsContainer,
-        Pagination
-    );
+	AskData(
+		Inputs.Name.value,
+		Inputs.Status,
+		Inputs.Gender,
+		1,
+		ResultsContainer,
+		Pagination
+	);
 };
 
 const IsChecked = (check, array) => {
-    check.forEach((status) => {
-        if (status.checked) {
-            array.push(status.value);
-        }
-    });
+	check.forEach((status) => {
+		if (status.checked) {
+			array.push(status.value);
+		}
+	});
 };
 
 const AskData = async (
-    name,
-    status,
-    gender,
-    index,
-    ResultsContainer,
-    Pagination
+	name,
+	status,
+	gender,
+	index,
+	ResultsContainer,
+	Pagination
 ) => {
-    let Response = await fetch(
-        `https://rickandmortyapi.com/api/character/?page=${index}&name=${name}&status=${status}&gender=${gender}`
-    );
-    ConfirmStatus(Response, name, status, gender, ResultsContainer, Pagination);
+	let Response = await fetch(
+		`https://rickandmortyapi.com/api/character/?page=${index}&name=${name}&status=${status}&gender=${gender}`
+	);
+	ConfirmStatus(Response, name, status, gender, ResultsContainer, Pagination);
 };
 
 const ShowData = async (data, ResultsContainer) => {
-    const Container = document.getElementById('container');
-    if (Container.hasChildNodes() === false) {
-        Container.classList.add('container');
-        Container.classList.remove('container__error');
-        data.forEach((content) => {
-            const Character = CreateCharacter(content);
-            Container.insertAdjacentHTML('beforeend', Character);
+	const Container = document.getElementById('container');
+	if (Container.hasChildNodes() === false) {
+		Container.classList.add('container');
+		Container.classList.remove('container__error');
+		data.forEach((content) => {
+			const Character = CreateCharacter(content);
+			Container.insertAdjacentHTML('beforeend', Character);
 
-            ResultsContainer.append(Container);
-        });
-    } else if (Container.hasChildNodes() === true) {
-        Container.innerHTML = '';
-        Container.classList.remove('container__error');
-        data.forEach((content) => {
-            const Character = CreateCharacter(content);
-            Container.insertAdjacentHTML('beforeend', Character);
-        });
-    }
+			ResultsContainer.append(Container);
+		});
+	} else if (Container.hasChildNodes() === true) {
+		Container.innerHTML = '';
+		Container.classList.remove('container__error');
+		data.forEach((content) => {
+			const Character = CreateCharacter(content);
+			Container.insertAdjacentHTML('beforeend', Character);
+		});
+	}
 };
 
 const CreateCharacter = (content) => {
-    const statusImage = checkImageStatus(content.status);
-    const Character = `
+	const statusImage = checkImageStatus(content.status);
+	const Character = `
     <div class="character">
                         <img
                         loading="lazy" class="character__img" src=${
-                            content.image
-                        } alt=${content.name} title=${content.name} />
+							content.image
+						} alt=${content.name} title=${content.name} />
                         <div class="character-text">
                             <h3 class="character__name">${capitalizeFirstLetter(
-                                content.name
-                            )}</h3>
+								content.name
+							)}</h3>
                             <p class="character__status">
                                 <img
                                 loading="lazy" src=${statusImage} alt="${capitalizeFirstLetter(
-        content.status
-    )}" />
+		content.status
+	)}" />
                                 ${capitalizeFirstLetter(
-                                    content.status
-                                )} - ${capitalizeFirstLetter(content.species)}
+									content.status
+								)} - ${capitalizeFirstLetter(content.species)}
                             </p>
                             <p class="character__first">First seen in:</p>
                             <p class="character__location">${capitalizeFirstLetter(
-                                content.origin.name
-                            )}</p>
+								content.origin.name
+							)}</p>
                             <p class="character__last">
                                 Last know location:
                             </p>
@@ -608,156 +608,156 @@ const CreateCharacter = (content) => {
                         </div>
                     </div>`;
 
-    return Character;
+	return Character;
 };
 
 const checkImageStatus = (status) => {
-    if (status == 'Alive') {
-        return `/rick-morty/src/images/Alive-Icon.svg`;
-    } else if (status == 'Dead') {
-        return '/rick-morty/src/images/Dead-Icon.svg';
-    } else if (status == 'unknown') {
-        return '/rick-morty/src/images/Unknow-Icon.svg';
-    }
+	if (status == 'Alive') {
+		return `/rick-morty/src/images/Alive-Icon.svg`;
+	} else if (status == 'Dead') {
+		return '/rick-morty/src/images/Dead-Icon.svg';
+	} else if (status == 'unknown') {
+		return '/rick-morty/src/images/Unknow-Icon.svg';
+	}
 };
 
 const capitalizeFirstLetter = (string) => {
-    if (string === 'unknown') {
-        return string[0].toUpperCase() + string.slice(1);
-    } else {
-        return string;
-    }
+	if (string === 'unknown') {
+		return string[0].toUpperCase() + string.slice(1);
+	} else {
+		return string;
+	}
 };
 
 const ConfirmStatus = async (
-    Response,
-    name,
-    status,
-    gender,
-    ResultsContainer,
-    Pagination
+	Response,
+	name,
+	status,
+	gender,
+	ResultsContainer,
+	Pagination
 ) => {
-    switch (Response.status) {
-        case 200: {
-            errors = 0;
-            const Data = await Response.json();
-            ResultsContainer.classList.remove('results-container__error');
-            GetPaginationInfo(
-                Data.info,
-                name,
-                status,
-                gender,
-                ResultsContainer,
-                Pagination
-            );
-            ShowData(Data.results, ResultsContainer);
-            break;
-        }
-        case 404:
-            errors = errors + 1;
-            ErrorShow(errors);
-            break;
-        default:
-            console.log(Response.error);
-            break;
-    }
+	switch (Response.status) {
+		case 200: {
+			errors = 0;
+			const Data = await Response.json();
+			ResultsContainer.classList.remove('results-container__error');
+			GetPaginationInfo(
+				Data.info,
+				name,
+				status,
+				gender,
+				ResultsContainer,
+				Pagination
+			);
+			ShowData(Data.results, ResultsContainer);
+			break;
+		}
+		case 404:
+			errors = errors + 1;
+			ErrorShow(errors);
+			break;
+		default:
+			console.log(Response.error);
+			break;
+	}
 };
 
 const ErrorShow = (numOfErrors) => {
-    const ResultsContainer = document.getElementById('results-container');
-    const Container = document.getElementById('container');
-    const ErrorContainer = SelectErrorMessage(numOfErrors);
-    let Pagination = document.getElementById('pagination');
+	const ResultsContainer = document.getElementById('results-container');
+	const Container = document.getElementById('container');
+	const ErrorContainer = SelectErrorMessage(numOfErrors);
+	let Pagination = document.getElementById('pagination');
 
-    if (Pagination) {
-        Pagination.innerHTML = '';
-    }
+	if (Pagination) {
+		Pagination.innerHTML = '';
+	}
 
-    ResultsContainer.classList.add('results-container__error');
-    Container.classList.add('container__error');
+	ResultsContainer.classList.add('results-container__error');
+	Container.classList.add('container__error');
 
-    Container.innerHTML = ErrorContainer;
+	Container.innerHTML = ErrorContainer;
 };
 
 const SelectErrorMessage = (error) => {
-    if (error <= 3) {
-        let index = error - 1;
-        return `<img
+	if (error <= 3) {
+		let index = error - 1;
+		return `<img
         loading="lazy" src=${AnswerOfErrors[index].image} />
      <p>${AnswerOfErrors[index].phrase}</p>`;
-    } else if (error > 3) {
-        return `<img
+	} else if (error > 3) {
+		return `<img
         loading="lazy" src=${AnswerOfErrors[-1].image} />
     <p>${AnswerOfErrors[-1].phrase}</p>`;
-    }
+	}
 };
 
 const GetPaginationInfo = (
-    info,
-    name,
-    status,
-    gender,
-    ResultsContainer,
-    Pagination
+	info,
+	name,
+	status,
+	gender,
+	ResultsContainer,
+	Pagination
 ) => {
-    let lastPage = info.pages;
+	let lastPage = info.pages;
 
-    let nextPage = info.next;
-    let number = /[0-9]+/;
-    let firstPage = 1;
+	let nextPage = info.next;
+	let number = /[0-9]+/;
+	let firstPage = 1;
 
-    if (nextPage != null) {
-        let pageNumber = nextPage.match(number);
-        let result = pageNumber[0];
-        nextPage = parseInt(result);
-        const Pages = {
-            firstPage: firstPage,
-            prevPage: nextPage - 2,
-            actualPage: nextPage - 1,
-            nextPage: nextPage,
-            lastPage: lastPage,
-        };
-        CreatePagination(
-            Pages,
-            name,
-            status,
-            gender,
-            ResultsContainer,
-            Pagination
-        );
-    } else if (nextPage == null) {
-        let actualPage = lastPage;
-        const Pages = {
-            firstPage: firstPage,
-            prevPage: actualPage - 1,
-            actualPage: lastPage,
-            nextPage: lastPage,
-            lastPage: lastPage,
-        };
-        CreatePagination(
-            Pages,
-            name,
-            status,
-            gender,
-            ResultsContainer,
-            Pagination
-        );
-    }
+	if (nextPage != null) {
+		let pageNumber = nextPage.match(number);
+		let result = pageNumber[0];
+		nextPage = parseInt(result);
+		const Pages = {
+			firstPage: firstPage,
+			prevPage: nextPage - 2,
+			actualPage: nextPage - 1,
+			nextPage: nextPage,
+			lastPage: lastPage,
+		};
+		CreatePagination(
+			Pages,
+			name,
+			status,
+			gender,
+			ResultsContainer,
+			Pagination
+		);
+	} else if (nextPage == null) {
+		let actualPage = lastPage;
+		const Pages = {
+			firstPage: firstPage,
+			prevPage: actualPage - 1,
+			actualPage: lastPage,
+			nextPage: lastPage,
+			lastPage: lastPage,
+		};
+		CreatePagination(
+			Pages,
+			name,
+			status,
+			gender,
+			ResultsContainer,
+			Pagination
+		);
+	}
 };
 
 const CreatePagination = (
-    Pages,
-    name,
-    status,
-    gender,
-    ResultsContainer,
-    Pagination
+	Pages,
+	name,
+	status,
+	gender,
+	ResultsContainer,
+	Pagination
 ) => {
-    let paginationContainer = document.createElement('div');
-    paginationContainer.classList.add('pagination');
-    Pagination.innerHTML = '';
+	let paginationContainer = document.createElement('div');
+	paginationContainer.classList.add('pagination');
+	Pagination.innerHTML = '';
 
-    const PaginationItem = `
+	const PaginationItem = `
     <div id="button-first-page" class="button-change button-first-page">
                         <img
                         loading="lazy" src="/rick-morty/src/images/First-Page.svg" alt="First Page">
@@ -776,112 +776,112 @@ const CreatePagination = (
                         loading="lazy" src="/rick-morty/src/images/Last-Page.svg" alt="Last Page">
                     </div>
     `;
-    paginationContainer.insertAdjacentHTML('beforeend', PaginationItem);
-    Pagination.appendChild(paginationContainer);
+	paginationContainer.insertAdjacentHTML('beforeend', PaginationItem);
+	Pagination.appendChild(paginationContainer);
 
-    CreateChangeButtons(
-        name,
-        status,
-        gender,
-        ResultsContainer,
-        Pagination,
-        Pages
-    );
+	CreateChangeButtons(
+		name,
+		status,
+		gender,
+		ResultsContainer,
+		Pagination,
+		Pages
+	);
 };
 
 const CreateChangeButtons = (
-    name,
-    status,
-    gender,
-    ResultsContainer,
-    Pagination,
-    Pages
+	name,
+	status,
+	gender,
+	ResultsContainer,
+	Pagination,
+	Pages
 ) => {
-    let ButtonFirstPage = document.getElementById('button-first-page');
-    let ButtonPrevPage = document.getElementById('button-prev-page');
-    let ButtonNextPage = document.getElementById('button-next-page');
-    let ButtonLastPage = document.getElementById('button-last-page');
-    let ButtonActualPage = document.getElementById('button-actual-page');
+	let ButtonFirstPage = document.getElementById('button-first-page');
+	let ButtonPrevPage = document.getElementById('button-prev-page');
+	let ButtonNextPage = document.getElementById('button-next-page');
+	let ButtonLastPage = document.getElementById('button-last-page');
+	let ButtonActualPage = document.getElementById('button-actual-page');
 
-    RemoveButtonsConditional(
-        ButtonFirstPage,
-        ButtonPrevPage,
-        ButtonNextPage,
-        ButtonLastPage,
-        ButtonActualPage,
-        Pages
-    );
+	RemoveButtonsConditional(
+		ButtonFirstPage,
+		ButtonPrevPage,
+		ButtonNextPage,
+		ButtonLastPage,
+		ButtonActualPage,
+		Pages
+	);
 
-    ButtonFirstPage.addEventListener('click', () => {
-        const index = Pages.firstPage;
-        AskData(name, status, gender, index, ResultsContainer, Pagination);
-        const Timer = setInterval(() => {
-            GoUp(Timer);
-        }, 1);
-    });
-    ButtonPrevPage.addEventListener('click', (e) => {
-        const index = parseInt(e.target.textContent);
-        AskData(name, status, gender, index, ResultsContainer, Pagination);
-        const Timer = setInterval(() => {
-            GoUp(Timer);
-        }, 1);
-    });
-    ButtonNextPage.addEventListener('click', (e) => {
-        const index = parseInt(e.target.textContent);
-        AskData(name, status, gender, index, ResultsContainer, Pagination);
-        const Timer = setInterval(() => {
-            GoUp(Timer);
-        }, 1);
-    });
-    ButtonLastPage.addEventListener('click', () => {
-        const index = Pages.lastPage;
-        AskData(name, status, gender, index, ResultsContainer, Pagination);
-        const Timer = setInterval(() => {
-            GoUp(Timer);
-        }, 1);
-    });
+	ButtonFirstPage.addEventListener('click', () => {
+		const index = Pages.firstPage;
+		AskData(name, status, gender, index, ResultsContainer, Pagination);
+		const Timer = setInterval(() => {
+			GoUp(Timer);
+		}, 1);
+	});
+	ButtonPrevPage.addEventListener('click', (e) => {
+		const index = parseInt(e.target.textContent);
+		AskData(name, status, gender, index, ResultsContainer, Pagination);
+		const Timer = setInterval(() => {
+			GoUp(Timer);
+		}, 1);
+	});
+	ButtonNextPage.addEventListener('click', (e) => {
+		const index = parseInt(e.target.textContent);
+		AskData(name, status, gender, index, ResultsContainer, Pagination);
+		const Timer = setInterval(() => {
+			GoUp(Timer);
+		}, 1);
+	});
+	ButtonLastPage.addEventListener('click', () => {
+		const index = Pages.lastPage;
+		AskData(name, status, gender, index, ResultsContainer, Pagination);
+		const Timer = setInterval(() => {
+			GoUp(Timer);
+		}, 1);
+	});
 };
 
 const GoUp = (Timer) => {
-    if (window.scrollY != 0) {
-        const position = window.scrollY;
-        let change = window.innerWidth > 640 ? position - 30 : position - 80;
-        window.scrollTo(change, change);
-    } else if (window.scrollY == 0) {
-        clearInterval(Timer);
-    }
+	if (window.scrollY != 0) {
+		const position = window.scrollY;
+		let change = window.innerWidth > 640 ? position - 30 : position - 80;
+		window.scrollTo(change, change);
+	} else if (window.scrollY == 0) {
+		clearInterval(Timer);
+	}
 };
 
 const RemoveButtonsConditional = (
-    ButtonFirstPage,
-    ButtonPrevPage,
-    ButtonNextPage,
-    ButtonLastPage,
-    ButtonActualPage,
-    Pages
+	ButtonFirstPage,
+	ButtonPrevPage,
+	ButtonNextPage,
+	ButtonLastPage,
+	ButtonActualPage,
+	Pages
 ) => {
-    let ButtonFirstPageNumber = Pages.firstPage;
-    let ButtonPrevPageNumber = parseInt(ButtonPrevPage.textContent);
-    let ButtonNextPageNumber = parseInt(ButtonNextPage.textContent);
-    let ButtonLastPageNumber = Pages.lastPage;
-    let ButtonActualPageNumber = parseInt(ButtonActualPage.textContent);
+	let ButtonFirstPageNumber = Pages.firstPage;
+	let ButtonPrevPageNumber = parseInt(ButtonPrevPage.textContent);
+	let ButtonNextPageNumber = parseInt(ButtonNextPage.textContent);
+	let ButtonLastPageNumber = Pages.lastPage;
+	let ButtonActualPageNumber = parseInt(ButtonActualPage.textContent);
 
-    if (ButtonPrevPageNumber <= 0) {
-        ButtonPrevPage.style.display = 'none';
-    }
+	if (ButtonPrevPageNumber <= 0) {
+		ButtonPrevPage.style.display = 'none';
+	}
 
-    if (ButtonNextPageNumber >= ButtonLastPageNumber) {
-        ButtonLastPage.style.display = 'none';
-    }
+	if (ButtonNextPageNumber >= ButtonLastPageNumber) {
+		ButtonLastPage.style.display = 'none';
+	}
 
-    if (ButtonNextPageNumber == ButtonActualPageNumber) {
-        ButtonNextPage.style.display = 'none';
-    }
+	if (ButtonNextPageNumber == ButtonActualPageNumber) {
+		ButtonNextPage.style.display = 'none';
+	}
 
-    if (
-        ButtonFirstPageNumber == ButtonActualPageNumber ||
-        ButtonFirstPageNumber == ButtonPrevPageNumber
-    ) {
-        ButtonFirstPage.style.display = 'none';
-    }
+	if (
+		ButtonFirstPageNumber == ButtonActualPageNumber ||
+		ButtonFirstPageNumber == ButtonPrevPageNumber
+	) {
+		ButtonFirstPage.style.display = 'none';
+	}
 };
